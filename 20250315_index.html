@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>뷰(VUe) 시작하기 웹 방식 CDN 코드</title>
+		<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+		<!-- vue v2.7.16 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+		<!-- vue v3.5.13 -->
+		<!-- data에서 return 필요  -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@3"></script> -->
+
+		<style>
+			:root {
+				/* background: red; */
+				background: white;
+				width: 100%;
+				height: 100%;
+				font: normal 14px/1 '맑은 고딕', 'arial';
+			}
+		</style>
+	</head>
+	<body>
+		<h1>뷰 시작하기</h1>
+		<p>문단 내용</p>
+		
+		<!-- 돔 DOM 컨테이너 -->
+		<!-- <div id="root"> -->
+			<!-- 데이터 바인딩
+			<div class="container">
+				<div class="title"></div>
+			</div>
+		</div> -->
+		<div id="root">뷰 시작하기</div>
+		<div id="header"></div>
+		<div id="section1"></div>
+		<div id="section2"></div>
+		<div id="footer"></div>
+	</body>
+
+	<script>
+		// 돔 DOM 컨테이너
+		// 1. 선택자 root
+		// 2. 텍스트 입력
+		let root = document.querySelector('#root');
+		const txt = '뷰 시작하기';
+		root.innerHTML = txt;
+	</script>
+		<style>
+			/* 반응형 설정 */
+			* {
+				margin: 0;
+				padding: 0;
+				vertical-align: middle;
+				box-sizing: border-box;
+				text-size-adjust: 100%;
+			}
+			#root {
+				/* 14px x 3배 */
+				font-size: 3rem;
+				text-align: center;
+				font-weight: 600;
+				color: #09c;
+				background: white;
+			}
+			header, main, footer, section, nav, aside {display: block;}
+			a {color: #444; text-decoration: none;}
+			ul {list-style: none;}
+		</style>
+
+	<hr>
+	<!-- 뷰 템플릿 HTML -->
+	<div id="app2">
+		<!-- <h1 title="뷰 시작하기">제목: {{ title }}</h1> -->
+		<!-- <h2 title="이상호">이름: {{ name }}</h2> -->
+		<h1 v-bind:title="title">제목: {{ title }}</h1>
+        <h2 :title="name">이름: {{ name }}</h2>
+		<p>
+			<!-- <img src="./img/1653038449592l0.jpeg" alt="[풀스키친] 라구 볼로네제 파스타 - 넓적한 면과 진한 라구 소스가 어우러진 파스타"/> -->
+			<img src="./img/1653038449592l0.jpeg" alt="[풀스키친] 라구 볼로네제 파스타 - 넓적한 면과 진한 라구 소스가 어우러진 파스타">
+			<img :src="image.src" :alt="image.alt" width="360" height="468" loading="lazy">
+		</p>
+	
+		<!-- <img src="https://img-cf.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/shop/data/goods/1653038449592l0.jpeg?v=0531"
+			alt="[풀스키친] 라구 볼로네제 파스타 - 넓적한 면과 진한 라구 소스가 어우러진 파스타"
+			width="360"
+			height="468"
+			loading="lazy"
+			decoding="async"
+			srcset="https://img-cf.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/shop/data/goods/1653038449592l0.jpeg?v=0531 360w,
+					https://img-cf.kurly.com/hdims/resize/%5E%3E720x%3E936/cropcenter/720x936/quality/85/src/shop/data/goods/1653038449592l0.jpeg?v=0531 720w,
+					https://img-cf.kurly.com/hdims/resize/%5E%3E1080x%3E1404/cropcenter/1080x1404/quality/85/src/shop/data/goods/1653038449592l0.jpeg?v=0531 1080w"
+			sizes="(max-width: 600px) 360px,
+					(max-width: 1200px) 720px,
+					1080px">
+	-->
+	</div>
+	
+	<!-- 뷰 컨트롤러 자바스크립트 -->
+	<script>
+		// 뷰 사용 선언 => 뷰 프로그램이 상단에 설치 되어야 한다.
+		// vue2 이상
+		// new Vue({
+        //     el: '#app2',
+		// 	data() {
+		// 		return {
+		// 			title: '뷰2 시작하기',
+		// 			name: '이상호',
+		// 			image: {
+		// 				src :'./img/1653038449592l0.jpeg',
+		// 				alt : '[풀스키친] 라구 볼로네제 파스타 - 넓적한 면과 진한 라구 소스가 어우러진 파스타',
+		// 			},
+		// 		};
+		// 	},
+		// 	 // 필요한 경우, methods, computed, watch, 라이프사이클 훅 등을 여기에 추가
+        // });
+
+		// vue2 이상
+		new Vue({
+			data() {
+				return {
+					title: '뷰2 시작하기',
+					name: '이상호',
+					image: {
+						src :'./img/1653038449592l0.jpeg',
+						alt : '[풀스키친] 라구 볼로네제 파스타 - 넓적한 면과 진한 라구 소스가 어우러진 파스타',
+					},
+				};
+			0},
+        }).$mount("#app2");
+
+	</script>
+
+
+	<!-- 뷰 UI 스타일 -->
+	<style>
+		#app2 {
+			padding: 10px;
+			text-align: center;
+		}
+
+		#app2 h1 {
+			font-size: 5rem;
+			color: #c33;
+			padding-top: 2rem;
+		}
+		#app2 h2 {
+			font-size: 3rem;
+			color: #666;
+			padding-top: 2rem;
+		}
+
+	</style>
+
+
+
+	<!-- <div id="app3"></div>
+
+	<script>
+		const App = {
+			setup() {
+				const message = Vue.ref('뷰 시작하기 (Vue 3 사용)');
+				return { message };
+			}
+			, template: `
+				<div>
+					{{ message }}
+				</div>
+			`
+			}
+
+		Vue.createApp(App).mount('#app3');
+	</script> -->
+</html>

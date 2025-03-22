@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰 3.0 CDN</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <h1>vue.js vue@3 CDN 사용하기</h1>
+
+    <!-- 뷰 템플릿 template -->
+    <div id="root">
+        <h2 :title="title">{{title}}</h2>
+
+        <!-- 돔 요소 인식 가능한 v-html -->
+        <h2 v-html="title2"></h2>
+        <!-- <button :disabled="isDisable" @click="onClickBtn">버튼클릭</button> -->
+        <button :disabled="isDisable" v-on:click="onClickBtn">버튼클릭</button>
+        <button @click="onClickAdd">버튼1씩증가</button>
+        <button @click="onClickSub">버튼1씩감소</button>
+        <h3>개수: {{ cnt }}</h3>
+    </div>
+
+    <!-- 뷰 컨트롤러 script -->
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    // title: '<em>뷰 컨테이너 제목</em>',
+                    title: '뷰 컨테이너 제목',
+                    title2: '<em>뷰 컨테이너 제목</em>',
+                    // isShow: false,
+                    // isDisable: true,
+                    isDisable: false,
+                    cnt: 0,
+                }
+            },
+            methods: {
+                onClickBtn() {
+                    // alert('버튼 클릭!');
+                    // this.message = "버튼 클릭";
+                    // this.isDisable = true;
+                    this.isDisable = ! this.isDisable;
+                },
+                onClickAdd () {
+                    this.cnt++;
+                    // this.cnt+=2;
+                },
+                onClickSub () {
+                    this.cnt--;
+                    // this.cnt-=2;
+                },
+            },
+        }).mount("#root")
+    </script>
+
+    <!-- 뷰 스타일 style -->
+    <style>
+        #root {
+            text-align: center;
+            h2 {
+                font-size: 28px;
+                color: #f00;
+                padding: 10px 0;
+            }
+        }
+    </style>
+    
+</body>
+</html>
