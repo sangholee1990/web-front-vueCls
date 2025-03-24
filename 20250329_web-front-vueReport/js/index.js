@@ -1,39 +1,30 @@
 import WrapComponent from "./WrapComponent.js"
-// import MdEditorV3 from 'md-editor-v3'
-// import VueMarkdown from 'vue-markdown-render'
 
-// var VueMarkdown = require('vue-markdown');
-
-{/* <WrapComponent></WrapComponent>
-<wrap-component/>
-<wrap-component></wrap-component> */}
-
-// Vue.use(VueMarkdown);
 Vue.createApp({
-    template:
-    `
+    template: `
         <WrapComponent/>
         
-        <div>
-            <textarea class="form-control" rows="15" v-model="message"></textarea>
-            <vue-markdown v-html="parsed_markdown"></vue-markdown>
+<!--        <textarea v-model="text" rows="10" cols="50"></textarea>-->
+         <div class="col-md-6">
+            <div v-html="parsedMarkdown"></div>
         </div>
-    `, 
+    `,
     components: {
         WrapComponent,
-        // 'md-editor': MdEditorV3,
-        // Markdown,
+        // 'md-editor': MdEditorV3,  // 주석 처리 - 필요 없으면 제거
+        // Markdown,              // 주석 처리 - 필요 없으면 제거
     },
-     data() {
-                return {
-                    message: '# Markdownのテスト',
-                }
-            },
-            computed: {
-                parsed_markdown: function () {
-                    return marked(this.message)
-                }
-            }
-}).mount("#root")
-
-// alert('index.js');
+    data() {
+        return {
+            text: `
+# Hello Vue3 
+- Markdown!'
+                `,
+        };
+    },
+    computed: {
+        parsedMarkdown() {
+            return marked.parse(this.text);
+        }
+    }
+}).mount("#root");
