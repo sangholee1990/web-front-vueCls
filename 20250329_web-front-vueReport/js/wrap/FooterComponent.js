@@ -2,13 +2,13 @@
 export default {
     template: 
     `
-    <footer id='footer' class="p-4 bg-gray-800 text-white text-center">
-        <h1>{{title}}</h1>
+    <footer id='footer'>
+        <p>{{title}}</p>
     </footer>
     `, 
     data() {
         return {
-            title: '© 2024 Vue Markdown Viewer'
+            title: '© 2025 vue 기초 및 활용. All rights reserved.'
         }
     }
 }

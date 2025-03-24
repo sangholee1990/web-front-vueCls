@@ -7,7 +7,7 @@ export default {
     template: 
     `
     <main id='main'>
-        <h1>{{title}}</h1>
+<!--        <h1>{{title}}</h1>-->
         <Section1Component/>
         <Section2Component/>
         <Section3Component/>

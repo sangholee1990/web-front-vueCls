@@ -21,7 +21,7 @@ export default {
     },
     data() {
         return {
-            title: 'WrapComponent'
+            title: 'vue 기초 및 활용'
         }
     }
 }

@@ -2,13 +2,26 @@
 export default {
     template: 
     `
-    <header id='header' class="p-4 bg-blue-500 text-white text-xl">
-        <h1>{{title}}</h1>
+    <header id='header'>
+        <h2>{{title}}</h2>
+            <nav>
+                 <ul>
+                    <li v-for="(section, index) in sectionList" :key="index">
+                        <a :href="'#section' + (index + 1)">{{ section }}</a>
+                    </li>
+                </ul>
+            </nav>
     </header>
     `,
     data() {
         return {
-            title: '📚 마크다운 수업 자료'
+            title: '주요 목차',
+            sectionList: ['1강', '2강', '3강', '4강'],
         }
-    }
+    },
+    methods: {
+        toggleMenu() {
+            this.isMenuVisible = !this.isMenuVisible;
+        }
+    },
 }
