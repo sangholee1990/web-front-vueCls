@@ -17,9 +17,7 @@ export default {
     <v-list dense>
       <v-list-item href="http://shlee1990.dothome.co.kr/20250315_01_index.html" target="_blank" rel="noopener noreferrer" class="hover:bg-grey-lighten-4 rounded">
         <v-list-item-content class="d-flex align-center">
-        <v-list-item-icon>
-          <v-icon color="blue darken-2" size="28">mdi-earth</v-icon>
-        </v-list-item-icon>
+        <v-icon color="blue darken-2" size="28" class="mr-3">mdi-earth</v-icon>
           <span class="font-weight-medium mr-2">CDN 서비스</span>
           <span style="font-size: 13px; color: #555;">http://shlee1990.dothome.co.kr/20250315_01_index.html</span>
         </v-list-item-content>
@@ -27,9 +25,7 @@ export default {
 
       <v-list-item href="http://shlee1990.dothome.co.kr/index.html" target="_blank" rel="noopener noreferrer" class="hover:bg-grey-lighten-4 rounded">
         <v-list-item-content class="d-flex align-center">
-        <v-list-item-icon>
-          <v-icon color="green darken-2" size="28">mdi-console</v-icon>
-        </v-list-item-icon>
+          <v-icon color="green darken-2" size="28" class="mr-3">mdi-console</v-icon>
           <span class="font-weight-medium mr-2">CLI 서비스</span>
           <span style="font-size: 13px; color: #555;">http://shlee1990.dothome.co.kr/index.html</span>
         </v-list-item-content>
