@@ -1,5 +1,14 @@
 import WrapComponent from "./WrapComponent.js"
 
+const vuetify = Vuetify.createVuetify({
+    theme: {
+        defaultTheme: 'light',
+    },
+    icons: {
+        defaultSet: 'mdi',
+    },
+})
+
 Vue.createApp({
     template: `
         <WrapComponent/>
@@ -11,9 +20,4 @@ Vue.createApp({
         return {
         };
     },
-    computed: {
-        parsedMarkdown() {
-            return marked.parse(this.text);
-        }
-    }
-}).mount("#root");
+}).use(vuetify).mount("#root");

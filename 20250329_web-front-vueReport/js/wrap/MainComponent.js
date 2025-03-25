@@ -1,29 +1,28 @@
 import Section1Component from "./main/Section1Component.js"
 import Section2Component from "./main/Section2Component.js"
-import Section3Component from "./main/Section3Component.js"
+import { parsedMarkdown } from './UtilsComponent.js';
 
-// 내보내기 1개 
+// 내보내기 1개
 export default {
-    template: 
-    `
-    <main id='main'>
-<!--        <h1>{{title}}</h1>-->
-        <Section1Component/>
-        <Section2Component/>
-        <Section3Component/>
-    </main>
-    
-<!--    <vue-markdown>i am a ~~tast~~ **test**.</vue-markdown>-->
-
-    `, 
+    template: `
+<v-main>
+    <v-container>
+        <Section1Component v-if="activeSection === 1" :active-section="activeSection" :parsed-markdown="parsedMarkdown" />
+        <Section2Component v-if="activeSection === 2" :active-section="activeSection" :parsed-markdown="parsedMarkdown" />
+    </v-container>
+</v-main>
+    `,
     components: {
         Section1Component,
         Section2Component,
-        Section3Component,
     },
     data() {
         return {
-            title: 'MainComponent'
+            // title: 'MainComponent',
         }
+    },
+    props: ['activeSection'],
+    methods: {
+        parsedMarkdown
     }
 }

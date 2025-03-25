@@ -1,19 +1,44 @@
 export default {
-    template:
-    `
-    <section id='section1'>
-        <h3>{{title}} 강의자료</h3>
-        <div v-html="parsedMarkdown"></div>
+    props: {
+        activeSection: Number,
+        parsedMarkdown: Function,
+    },
+    template: `
+<v-container class="py-6">
+  <!-- 강의자료 -->
+  <v-card class="mb-8" elevation="3" rounded="xl">
+    <v-card-title class="text-h5 font-weight-bold">
+      <v-icon class="mr-2" color="primary">mdi-book-open-page-variant</v-icon>
+       {{ activeSection }}강 강의자료
+    </v-card-title>
+    <v-divider></v-divider>
+    <v-card-text class="pa-4" style="background-color: #f9f9f9;">
+      <div v-html="parsedMarkdown(markdown)" class="markdown-body"></div>
+    </v-card-text>
+  </v-card>
+
+  <!-- 첨부파일 -->
+  <v-card elevation="3" rounded="xl">
+    <v-card-title class="text-h5 font-weight-bold">
+      <v-icon class="mr-2" color="primary">mdi-paperclip</v-icon>
+      {{ activeSection }}강 첨부파일
+    </v-card-title>
+    <v-divider></v-divider>
+    <v-card-text class="pa-4">
+      <v-list dense>
+        <v-list-item href="https://drive.google.com/uc?export=download&id=1-5iC-D3VzdBcAdu3VudIgBMwm1hrmCi3" target="_blank" rel="noopener noreferrer" download class="hover:underline">
+          <v-list-item-icon> <v-icon color="primary">mdi-file-download</v-icon></v-list-item-icon>
+          <v-list-item-content>알집 캡처 ALDrive213.exe</v-list-item-content>
+        </v-list-item>
         
-        <h3>{{title}} 첨부파일</h3>
-        <ul>
-            <li><a href="https://drive.google.com/uc?export=download&id=1-5iC-D3VzdBcAdu3VudIgBMwm1hrmCi3" target="_blank" rel="noopener noreferrer" download>알집 캡처 ALDrive213.exe</a></li>
-        </ul>
-    </section>
-    `,
+      </v-list>
+    </v-card-text>
+  </v-card>
+
+</v-container>
+`,
     data() {
         return {
-            title: '1강',
             markdown: `
 ### 노드 CLI
 - 프로젝트 작업 폴더 만들기
@@ -70,13 +95,5 @@ nvm use 20.18.0
 
 `,
         };
-    },
-    computed: {
-        parsedMarkdown() {
-            // return marked.parse(this.markdown);
-            const rawHtml = marked.parse(this.markdown);
-            const sanitizedHtml = DOMPurify.sanitize(rawHtml);
-            return `<div class="markdown-body">${sanitizedHtml}</div>`;
-        }
     },
 }
