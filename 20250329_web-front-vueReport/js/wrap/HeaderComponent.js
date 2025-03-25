@@ -1,4 +1,3 @@
-// 내보내기 1개 
 export default {
     template: `
 <v-app-bar :elevation="2">

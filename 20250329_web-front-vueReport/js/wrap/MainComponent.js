@@ -2,7 +2,6 @@ import Section1Component from "./main/Section1Component.js"
 import Section2Component from "./main/Section2Component.js"
 import { parsedMarkdown } from './UtilsComponent.js';
 
-// 내보내기 1개
 export default {
     template: `
 <v-main>
@@ -11,10 +10,13 @@ export default {
         <Section2Component v-if="activeSection === 2" :active-section="activeSection" :parsed-markdown="parsedMarkdown" />
     </v-container>
 </v-main>
-    `,
+`,
     components: {
         Section1Component,
         Section2Component,
+    },
+    methods: {
+        parsedMarkdown
     },
     data() {
         return {
@@ -22,7 +24,4 @@ export default {
         }
     },
     props: ['activeSection'],
-    methods: {
-        parsedMarkdown
-    }
 }

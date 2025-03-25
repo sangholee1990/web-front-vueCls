@@ -1,6 +1,5 @@
-// 내보내기 1개 
 export default {
-    template:`
+    template: `
 <v-footer>
     <v-container>
         <v-row justify="center">
