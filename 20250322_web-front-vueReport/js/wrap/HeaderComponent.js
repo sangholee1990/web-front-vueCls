@@ -34,7 +34,7 @@ export default {
     data() {
         return {
             title: 'vue 기초 및 활용',
-            sectionList: ['1강', '2강'],
+            sectionList: ['1강', '2강', '3강'],
             drawer: false,
         }
     },

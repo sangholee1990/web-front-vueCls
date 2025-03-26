@@ -41,7 +41,7 @@ export default {
        {{ activeSection }}강 강의자료
     </v-card-title>
     <v-divider></v-divider>
-    <v-card-text class="pa-4" style="background-color: #f9f9f9;">
+    <v-card-text class="pa-4">
       <div v-html="parsedMarkdown(markdown)" class="markdown-body"></div>
     </v-card-text>
   </v-card>
