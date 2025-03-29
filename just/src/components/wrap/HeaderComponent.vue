@@ -201,8 +201,9 @@
 <script>
 // 제이쿼리 사용 : 패키지 설치
 // npm i jquery
+// import jquery from "jquery";
 import $ from "jquery";
-console.log($);
+// console.log($);
 
 export default {
   name: "HeaderComponent",
@@ -212,8 +213,54 @@ export default {
       title: "HeaderComponent",
     };
   },
+  props: [],
   beforeCreate() {},
-  created() {},
+
+  // 화면이 다 그려지면 제이쿼리를 사용함
+  created() {
+    // console.log($(this));
+    // 즉시실행함수 권장
+    // (function ($) {
+    //   //1. 메인버튼
+    //   $(".main-btn").on({
+    //     mouseenter() {
+    //       $(".sub").stop().slideUp(0);
+    //       $(this).next(".sub").stop().slideDown(200);
+    //       // 메인버튼
+    //       $(".main-btn").removeClass("on");
+    //       $(this).addClass("on");
+    //     },
+    //   });
+    //   //2. 메인버튼과 서브메뉴 칸
+    //   $(".col").on({
+    //     mouseleave() {
+    //       $(".sub").stop().slideUp(200);
+    //       $(".main-btn").removeClass("on");
+    //     },
+    //   });
+    // })(jquery);
+
+    // 제이쿼리 선언문
+    $(function () {
+      //1. 메인버튼
+      $(".main-btn").on({
+        mouseenter() {
+          $(".sub").stop().slideUp(0);
+          $(this).next(".sub").stop().slideDown(200);
+          // 메인버튼
+          $(".main-btn").removeClass("on");
+          $(this).addClass("on");
+        },
+      });
+      //2. 메인버튼과 서브메뉴 칸
+      $(".col").on({
+        mouseleave() {
+          $(".sub").stop().slideUp(200);
+          $(".main-btn").removeClass("on");
+        },
+      });
+    });
+  },
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},

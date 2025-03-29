@@ -25,6 +25,8 @@
   </section>
 </template>
 <script>
+import $ from "jquery";
+
 export default {
   name: "Section1Component",
   components: {},
@@ -34,7 +36,43 @@ export default {
     };
   },
   beforeCreate() {},
-  created() {},
+  created() {
+    $(function () {
+      // 갤러리버튼 클릭 이벤트
+      $(".gallery-btn").on({
+        click() {
+          $(".gallery-btn").addClass("on");
+          $(".notice-btn").addClass("on");
+          $(".notice-box").hide();
+          $(".gallery-box").show();
+        },
+      });
+
+      // 공지사항버튼 클릭 이벤트
+      $(".notice-btn").on({
+        click() {
+          $(".gallery-btn").removeClass("on");
+          $(".notice-btn").removeClass("on");
+          $(".notice-box").show();
+          $(".gallery-box").hide();
+        },
+      });
+
+      // 팝업버튼 클릭 이벤트
+      $(".popup-btn").on({
+        click() {
+          $(".popup").css({ display: "flex" }); // show().css({display:'flex'})
+        },
+      });
+      // 팝업닫기버튼 클릭 이벤트
+      $(".close-btn").on({
+        click() {
+          // $('.popup').hide();
+          $(".popup").css({ display: "none" }); // hide()
+        },
+      });
+    });
+  },
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
