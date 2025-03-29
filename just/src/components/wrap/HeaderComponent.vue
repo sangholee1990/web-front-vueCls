@@ -3,7 +3,8 @@
     <!-- {{ title }} -->
     <div class="left">
       <h1>
-        <a href="../../../public/index.html" title="JUST 쇼핑몰"
+        <!-- <a href="../../../public/index.html" title="JUST 쇼핑몰 로고" -->
+        <a href="/just" title="JUST 쇼핑몰 로고"
           ><span>JUST</span> <span>쇼핑몰</span></a
         >
       </h1>
