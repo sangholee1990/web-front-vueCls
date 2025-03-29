@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import WrapComponent from "./components/WrapComponent.vue";
 
-createApp(App).mount('#app')
+createApp(WrapComponent).mount("#app");
