@@ -1,6 +1,7 @@
 <template>
   <!-- 팝업창(모달창) -->
   <div class="popup">
+    <!-- <div class="popup on"> -->
     <!-- {{ title }} -->
     <div class="container">
       <div class="title">

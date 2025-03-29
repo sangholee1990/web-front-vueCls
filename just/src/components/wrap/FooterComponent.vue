@@ -127,8 +127,8 @@ export default {
   align-items: center;
   justify-content: center;
 }
-#wrap #fooeter .right .container {
-}
+/* #wrap #fooeter .right .container {} */
+
 #wrap #fooeter .right .container a {
   margin: 0 5px;
 }
