@@ -200,11 +200,7 @@
 
 <script>
 // 제이쿼리 사용 : 패키지 설치
-// npm i jquery
-// import jquery from "jquery";
 import $ from "jquery";
-// console.log($);
-
 export default {
   name: "HeaderComponent",
   components: {},

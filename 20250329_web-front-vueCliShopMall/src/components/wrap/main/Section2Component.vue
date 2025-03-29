@@ -12,31 +12,31 @@
             <ul>
               <li>
                 <a href="#" class="popup-btn" title="9월 just 쇼핑몰 세일 안내!"
-                  >9월 just 쇼핑몰 세일 안내!</a
+                >9월 just 쇼핑몰 세일 안내!</a
                 ><span>2018-09-03</span>
               </li>
               <li>
                 <a href="#" title="불편한 경험은 저희에게도 알려주세요."
-                  >불편한 경험은 저희에게도 알려주세요.</a
+                >불편한 경험은 저희에게도 알려주세요.</a
                 ><span>2018-09-02</span>
               </li>
               <li>
                 <a href="#" title="카카오톡 친구 추가하고 할인쿠폰 받아 가세요."
-                  >카카오톡 친구 추가하고 할인쿠폰 받아 가세요.</a
+                >카카오톡 친구 추가하고 할인쿠폰 받아 가세요.</a
                 ><span>2018-09-01</span>
               </li>
               <li>
                 <a
-                  href="#"
-                  title="다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?"
-                  >다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?</a
+                    href="#"
+                    title="다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?"
+                >다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?</a
                 ><span>2018-08-31</span>
               </li>
               <li>
                 <a
-                  href="#"
-                  title="just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!"
-                  >just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!</a
+                    href="#"
+                    title="just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!"
+                >just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!</a
                 ><span>2018-08-30</span>
               </li>
             </ul>
@@ -45,25 +45,25 @@
             <ul>
               <li>
                 <a
-                  href="#"
-                  title="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
-                  ><img
+                    href="#"
+                    title="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
+                ><img
                     src="../../../../public/images/img1.jpg"
                     alt="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
                 /></a>
               </li>
               <li>
                 <a
-                  href="#"
-                  title="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
-                  ><img
+                    href="#"
+                    title="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
+                ><img
                     src="../../../../public/images/img2.jpg"
                     alt="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
                 /></a>
               </li>
               <li>
                 <a href="#" title="노란 원피스 입은 모델 이미지"
-                  ><img
+                ><img
                     src="../../../../public/images/img3.jpg"
                     alt="노란 원피스 입은 모델 이미지"
                 /></a>
@@ -107,7 +107,9 @@
     </div>
   </section>
 </template>
+
 <script>
+import $ from "jquery";
 export default {
   name: "Section2Component",
   components: {},
@@ -116,14 +118,58 @@ export default {
       title: "Section2Component",
     };
   },
-  beforeCreate() {},
-  created() {},
-  beforeMount() {},
-  mounted() {},
-  beforeUpdate() {},
-  updated() {},
-  beforeUnmount() {},
-  unmounted() {},
+  beforeCreate() {
+  },
+  created() {
+    $(function () {
+        // 갤러리버튼 클릭 이벤트
+        $(".gallery-btn").on({
+          click() {
+            $(".gallery-btn").addClass("on");
+            $(".notice-btn").addClass("on");
+            $(".notice-box").hide();
+            $(".gallery-box").show();
+          },
+        });
+
+        // 공지사항버튼 클릭 이벤트
+        $(".notice-btn").on({
+          click() {
+            $(".gallery-btn").removeClass("on");
+            $(".notice-btn").removeClass("on");
+            $(".notice-box").show();
+            $(".gallery-box").hide();
+          },
+        });
+
+        // 팝업버튼 클릭 이벤트
+        $(".popup-btn").on({
+          click() {
+            $(".popup").css({display: "flex"}); // show().css({display:'flex'})
+          },
+        });
+        // 팝업닫기버튼 클릭 이벤트
+        $(".close-btn").on({
+          click() {
+            // $('.popup').hide();
+            $(".popup").css({display: "none"}); // hide()
+          },
+        });
+    });
+
+  },
+  beforeMount() {
+  },
+  mounted() {
+  },
+  beforeUpdate() {
+  },
+  updated() {
+  },
+  beforeUnmount() {
+  },
+  unmounted() {
+  },
   methods: {},
 };
 </script>
@@ -136,10 +182,12 @@ export default {
   padding: 10px 0;
   user-select: none;
 }
+
 #wrap #main #section2 .left {
   width: 33.333%;
   height: 100%;
 }
+
 #wrap #main #section2 .left .container {
   width: 100%;
   height: 100%;
@@ -159,6 +207,7 @@ export default {
   left: 0;
   z-index: 2;
 }
+
 #wrap #main #section2 .left .container .title button {
   padding: 0 10px;
   border: 0;
@@ -173,6 +222,7 @@ export default {
   background: #fff;
   cursor: default;
 }
+
 #wrap #main #section2 .left .container .title button.notice-btn.on {
   border: 1px solid #ccc;
   background: #f3f3f3;
@@ -185,6 +235,7 @@ export default {
   background: #f3f3f3;
   cursor: pointer;
 }
+
 #wrap #main #section2 .left .container .title button.gallery-btn.on {
   border: 1px solid #ccc;
   border-bottom: 1px solid rgba(204, 204, 204, 0);
@@ -201,6 +252,7 @@ export default {
   position: relative;
   z-index: 1;
 }
+
 /* 공지사항 박스 갤러리 박스 공통스타일 */
 #wrap #main #section2 .left .container .content > div {
   width: 100%;
@@ -213,9 +265,11 @@ export default {
 #wrap #main #section2 .left .container .content div.notice-box {
   padding-top: 8px;
 }
+
 #wrap #main #section2 .left .container .content div.notice-box ul {
   width: 100%;
 }
+
 #wrap #main #section2 .left .container .content div.notice-box ul li {
   width: 100%;
   line-height: 24.6px;
@@ -225,17 +279,19 @@ export default {
   display: flex;
   justify-content: space-between; /* 공지내용 텍스트 왼쪽 / 날짜 오른쪽 */
 }
+
 #wrap
-  #main
-  #section2
-  .left
-  .container
-  .content
-  div.notice-box
-  ul
-  li:last-child {
+#main
+#section2
+.left
+.container
+.content
+div.notice-box
+ul
+li:last-child {
   border-bottom: 0;
 }
+
 #wrap #main #section2 .left .container .content div.notice-box ul li::before {
   content: "";
   width: 2px;
@@ -258,6 +314,7 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 #wrap #main #section2 .left .container .content div.notice-box ul li a:hover {
   text-decoration: underline;
   color: #90f;
@@ -273,35 +330,40 @@ export default {
   background: #fff;
   display: none;
 }
+
 #wrap #main #section2 .left .container .content div.gallery-box ul {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
 }
+
 #wrap #main #section2 .left .container .content div.gallery-box ul li {
   width: 33.333%;
 }
+
 #wrap #main #section2 .left .container .content div.gallery-box ul li a {
   margin: 0 10px;
   display: block;
   overflow: hidden;
 }
+
 #wrap #main #section2 .left .container .content div.gallery-box ul li a img {
   width: 100%;
   transition: all 0.3s;
 }
+
 #wrap
-  #main
-  #section2
-  .left
-  .container
-  .content
-  div.gallery-box
-  ul
-  li
-  a
-  img:hover {
+#main
+#section2
+.left
+.container
+.content
+div.gallery-box
+ul
+li
+a
+img:hover {
   transform: scale(1.1);
 }
 
@@ -312,15 +374,18 @@ export default {
   background: #fff;
   padding: 0 0 0 10px;
 }
+
 #wrap #main #section2 .center .container {
   width: 100%;
   height: 100%;
   border: 0px solid #ccc;
 }
+
 #wrap #main #section2 .center .container .content {
   width: 100%;
   height: 100%;
 }
+
 #wrap #main #section2 .center .container .content a {
   width: 100%;
   height: 100%;
@@ -330,6 +395,7 @@ export default {
   background: url(../../../../public/images/image4.jpg) no-repeat 50% 50%;
   background-size: cover;
 }
+
 #wrap #main #section2 .center .container .content a h3 {
   font-size: 24px;
   font-weight: 600;
@@ -339,6 +405,7 @@ export default {
   width: 100%;
   text-align: center;
 }
+
 #wrap #main #section2 .center .container .content a:hover h3 {
   color: #fff;
 }
@@ -350,15 +417,18 @@ export default {
   background: #fff;
   padding: 0 0 0 10px;
 }
+
 #wrap #main #section2 .right .container {
   width: 100%;
   height: 100%;
   border: 0px solid #ccc;
 }
+
 #wrap #main #section2 .right .container .content {
   width: 100%;
   height: 100%;
 }
+
 #wrap #main #section2 .right .container .content ul {
   width: 100%;
   height: 100%;
@@ -366,9 +436,11 @@ export default {
   flex-flow: column nowrap; /* <= 세로정렬 / 가로정렬 => flex-flow: row nowrap;*/
   justify-content: space-between;
 }
+
 #wrap #main #section2 .right .container .content ul li {
   width: 100%;
 }
+
 #wrap #main #section2 .right .container .content ul li a {
   display: flex;
   width: 100%;
@@ -384,9 +456,11 @@ export default {
 #wrap #main #section2 .right .container .content ul li:nth-child(1) a {
   background-image: url(../../../../public/images/image2.jpg);
 }
+
 #wrap #main #section2 .right .container .content ul li:nth-child(2) a {
   background-image: url(../../../../public/images/image.jpg);
 }
+
 #wrap #main #section2 .right .container .content ul li:nth-child(3) a {
   background-image: url(../../../../public/images/image3.jpg);
 }

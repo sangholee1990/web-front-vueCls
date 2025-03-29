@@ -30,7 +30,9 @@
     </div>
   </footer>
 </template>
+
 <script>
+import $ from "jquery";
 export default {
   name: "FooterComponent",
   components: {},
@@ -40,7 +42,11 @@ export default {
     };
   },
   beforeCreate() {},
-  created() {},
+  created() {
+     $(function () {
+
+     });
+  },
   beforeMount() {},
   mounted() {},
   beforeUpdate() {},
