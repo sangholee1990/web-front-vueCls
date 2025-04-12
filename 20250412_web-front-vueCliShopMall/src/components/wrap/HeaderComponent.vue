@@ -296,6 +296,7 @@ export default {
         this.menu2 = false;
         this.menu3 = false;
         this.menu4 = false;
+        
         // nav 초기화
         this.nav = false;
       }, 300);

@@ -42,18 +42,23 @@ export default {
 
     //2. 메인슬라이드함수 3개 우측에서 좌측으로 이동  0 1 2
     function mainSlide() {
-      console.log(cnt);
+      // console.log(cnt);
 
-      slide.forEach(function (item, idx) {
-        console.log(idx, item);
-        item.style = 'z-index: 1; opacity: 1';
+      // slide.forEach(function (item, idx) {
+      slide.forEach(function (item) {
+        // console.log(idx, item);
+        item.style = "z-index: 1; opacity: 1";
       });
 
+      // console.log("다음 슬라이드" + cnt);
+      // console.log("현재 슬라이드" + (cnt - 1));
+      console.log(cnt, cnt - 1 < 0 ? 2 : cnt - 1);
+
       // 다음 슬라이드
-      slide[cnt]
+      slide[cnt].style = "z-index: 2";
 
       // 현재 슬라이드
-      slide[cnt - 1]
+      slide[cnt - 1 < 0 ? 2 : cnt - 1].style = "z-index: 3; opacity: 0";
 
       // 모든 슬라이드 3개 z-index 1, opacity 1 설정 초기화
 
@@ -111,6 +116,7 @@ export default {
   width: 100%;
   height: 100%;
   background: url() no-repeat 50% 50%;
+  transition: opacity 1s ease-in-out;
 }
 #wrap #main #section1 .slide-container .slide-content .slide-wrap .slide1 {
   background-image: url(../../../../public/images/banner_img.jpg);
