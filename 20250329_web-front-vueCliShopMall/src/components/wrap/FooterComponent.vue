@@ -43,9 +43,7 @@ export default {
   },
   beforeCreate() {},
   created() {
-     $(function () {
-
-     });
+    $(function () {});
   },
   beforeMount() {},
   mounted() {},

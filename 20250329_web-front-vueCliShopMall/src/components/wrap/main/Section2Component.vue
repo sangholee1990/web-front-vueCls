@@ -12,31 +12,31 @@
             <ul>
               <li>
                 <a href="#" class="popup-btn" title="9월 just 쇼핑몰 세일 안내!"
-                >9월 just 쇼핑몰 세일 안내!</a
+                  >9월 just 쇼핑몰 세일 안내!</a
                 ><span>2018-09-03</span>
               </li>
               <li>
                 <a href="#" title="불편한 경험은 저희에게도 알려주세요."
-                >불편한 경험은 저희에게도 알려주세요.</a
+                  >불편한 경험은 저희에게도 알려주세요.</a
                 ><span>2018-09-02</span>
               </li>
               <li>
                 <a href="#" title="카카오톡 친구 추가하고 할인쿠폰 받아 가세요."
-                >카카오톡 친구 추가하고 할인쿠폰 받아 가세요.</a
+                  >카카오톡 친구 추가하고 할인쿠폰 받아 가세요.</a
                 ><span>2018-09-01</span>
               </li>
               <li>
                 <a
-                    href="#"
-                    title="다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?"
-                >다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?</a
+                  href="#"
+                  title="다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?"
+                  >다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?</a
                 ><span>2018-08-31</span>
               </li>
               <li>
                 <a
-                    href="#"
-                    title="just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!"
-                >just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!</a
+                  href="#"
+                  title="just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!"
+                  >just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!</a
                 ><span>2018-08-30</span>
               </li>
             </ul>
@@ -45,25 +45,25 @@
             <ul>
               <li>
                 <a
-                    href="#"
-                    title="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
-                ><img
+                  href="#"
+                  title="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
+                  ><img
                     src="../../../../public/images/img1.jpg"
                     alt="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
                 /></a>
               </li>
               <li>
                 <a
-                    href="#"
-                    title="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
-                ><img
+                  href="#"
+                  title="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
+                  ><img
                     src="../../../../public/images/img2.jpg"
                     alt="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
                 /></a>
               </li>
               <li>
                 <a href="#" title="노란 원피스 입은 모델 이미지"
-                ><img
+                  ><img
                     src="../../../../public/images/img3.jpg"
                     alt="노란 원피스 입은 모델 이미지"
                 /></a>
@@ -118,58 +118,50 @@ export default {
       title: "Section2Component",
     };
   },
-  beforeCreate() {
-  },
+  beforeCreate() {},
   created() {
     $(function () {
-        // 갤러리버튼 클릭 이벤트
-        $(".gallery-btn").on({
-          click() {
-            $(".gallery-btn").addClass("on");
-            $(".notice-btn").addClass("on");
-            $(".notice-box").hide();
-            $(".gallery-box").show();
-          },
-        });
+      // 갤러리버튼 클릭 이벤트
+      $(".gallery-btn").on({
+        click() {
+          $(".gallery-btn").addClass("on");
+          $(".notice-btn").addClass("on");
+          $(".notice-box").hide();
+          $(".gallery-box").show();
+        },
+      });
 
-        // 공지사항버튼 클릭 이벤트
-        $(".notice-btn").on({
-          click() {
-            $(".gallery-btn").removeClass("on");
-            $(".notice-btn").removeClass("on");
-            $(".notice-box").show();
-            $(".gallery-box").hide();
-          },
-        });
+      // 공지사항버튼 클릭 이벤트
+      $(".notice-btn").on({
+        click() {
+          $(".gallery-btn").removeClass("on");
+          $(".notice-btn").removeClass("on");
+          $(".notice-box").show();
+          $(".gallery-box").hide();
+        },
+      });
 
-        // 팝업버튼 클릭 이벤트
-        $(".popup-btn").on({
-          click() {
-            $(".popup").css({display: "flex"}); // show().css({display:'flex'})
-          },
-        });
-        // 팝업닫기버튼 클릭 이벤트
-        $(".close-btn").on({
-          click() {
-            // $('.popup').hide();
-            $(".popup").css({display: "none"}); // hide()
-          },
-        });
+      // 팝업버튼 클릭 이벤트
+      $(".popup-btn").on({
+        click() {
+          $(".popup").css({ display: "flex" }); // show().css({display:'flex'})
+        },
+      });
+      // 팝업닫기버튼 클릭 이벤트
+      $(".close-btn").on({
+        click() {
+          // $('.popup').hide();
+          $(".popup").css({ display: "none" }); // hide()
+        },
+      });
     });
-
   },
-  beforeMount() {
-  },
-  mounted() {
-  },
-  beforeUpdate() {
-  },
-  updated() {
-  },
-  beforeUnmount() {
-  },
-  unmounted() {
-  },
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  beforeUnmount() {},
+  unmounted() {},
   methods: {},
 };
 </script>
@@ -281,14 +273,14 @@ export default {
 }
 
 #wrap
-#main
-#section2
-.left
-.container
-.content
-div.notice-box
-ul
-li:last-child {
+  #main
+  #section2
+  .left
+  .container
+  .content
+  div.notice-box
+  ul
+  li:last-child {
   border-bottom: 0;
 }
 
@@ -354,16 +346,16 @@ li:last-child {
 }
 
 #wrap
-#main
-#section2
-.left
-.container
-.content
-div.gallery-box
-ul
-li
-a
-img:hover {
+  #main
+  #section2
+  .left
+  .container
+  .content
+  div.gallery-box
+  ul
+  li
+  a
+  img:hover {
   transform: scale(1.1);
 }
 

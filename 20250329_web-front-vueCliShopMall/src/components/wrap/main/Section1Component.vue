@@ -6,17 +6,17 @@
         <ul class="slide-wrap">
           <li class="slide slide1">
             <a href="#" title="JUST 쇼핑몰 오픈!"
-            ><span>JUST 쇼핑몰 오픈!</span></a
+              ><span>JUST 쇼핑몰 오픈!</span></a
             >
           </li>
           <li class="slide slide2">
             <a href="#" title="종합 쇼핑의 새 막을 연다! JUST 쇼핑몰!"
-            ><span>종합 쇼핑의 새 막을 연다! JUST 쇼핑몰!</span></a
+              ><span>종합 쇼핑의 새 막을 연다! JUST 쇼핑몰!</span></a
             >
           </li>
           <li class="slide slide3">
             <a href="#" title="JUST쇼핑몰 9월 세일 이벤트 안내"
-            ><span>JUST쇼핑몰 9월 세일 이벤트 안내</span></a
+              ><span>JUST쇼핑몰 9월 세일 이벤트 안내</span></a
             >
           </li>
         </ul>
@@ -36,8 +36,7 @@ export default {
       title: "Section1Component",
     };
   },
-  beforeCreate() {
-  },
+  beforeCreate() {},
   created() {
     $(function () {
       //1. 변수
@@ -46,12 +45,12 @@ export default {
       //2. 메인슬라이드함수 3개 우측에서 좌측으로 이동  0 1 2
       function mainSlide() {
         console.log("현재: " + (cnt - 1 < 0 ? 2 : cnt - 1), "다음: " + cnt);
-        $(".slide").css({zIndex: 1, opacity: 1});
-        $(".slide").eq(cnt).css({zIndex: 2});
+        $(".slide").css({ zIndex: 1, opacity: 1 });
+        $(".slide").eq(cnt).css({ zIndex: 2 });
         $(".slide")
-            .eq(cnt - 1 < 0 ? 2 : cnt - 1)
-            .css({zIndex: 3})
-            .animate({opacity: 0}, 1000);
+          .eq(cnt - 1 < 0 ? 2 : cnt - 1)
+          .css({ zIndex: 3 })
+          .animate({ opacity: 0 }, 1000);
       }
 
       //3. 다음카운트함수
@@ -69,18 +68,12 @@ export default {
       autotimer();
     });
   },
-  beforeMount() {
-  },
-  mounted() {
-  },
-  beforeUpdate() {
-  },
-  updated() {
-  },
-  beforeUnmount() {
-  },
-  unmounted() {
-  },
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  beforeUnmount() {},
+  unmounted() {},
   methods: {},
 };
 </script>
@@ -148,14 +141,14 @@ export default {
 }
 
 #wrap
-#main
-#section1
-.slide-container
-.slide-content
-.slide-wrap
-.slide
-a
-span {
+  #main
+  #section1
+  .slide-container
+  .slide-content
+  .slide-wrap
+  .slide
+  a
+  span {
   width: 100%;
   height: 70px;
   background: rgba(85, 170, 204, 0.7);
@@ -168,26 +161,26 @@ span {
 }
 
 #wrap
-#main
-#section1
-.slide-container
-.slide-content
-.slide-wrap
-.slide2
-a
-span {
+  #main
+  #section1
+  .slide-container
+  .slide-content
+  .slide-wrap
+  .slide2
+  a
+  span {
   background-color: rgba(204, 85, 170, 0.9);
 }
 
 #wrap
-#main
-#section1
-.slide-container
-.slide-content
-.slide-wrap
-.slide3
-a
-span {
+  #main
+  #section1
+  .slide-container
+  .slide-content
+  .slide-wrap
+  .slide3
+  a
+  span {
   background-color: rgba(250, 120, 85, 0.9);
 }
 </style>
