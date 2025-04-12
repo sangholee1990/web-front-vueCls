@@ -9,18 +9,26 @@
       </h1>
     </div>
     <div class="right">
-      <nav id="nav">
+      <!-- <nav id="nav"> -->
+      <nav id="nav" @mouseleave="mouseleaveNav">
         <ul>
           <li class="col">
             <!-- <a href="#" class="main-btn" title="탑">탑</a> -->
-            <a href="#" :class="['main-btn', { on: menu1 }]" title="탑" @mouseenter="mouseenterMenu1">탑</a>
-            <div class="sub sub1">
+            <a
+              href="#"
+              :class="['main-btn', { on: menu1 }]"
+              title="탑"
+              @mouseenter="mouseenterMenu1"
+              >탑</a
+            >
+            <!-- <div class="sub sub1"> -->
+            <div :class="['sub', 'sub1', { on: menu1 }]">
               <div class="sub-container">
                 <ul>
                   <li>
                     <!-- 1열 -->
                     <ul>
-                      <li><a href="#" title="블라우스">블라우스</a></li>
+                      <li><a href="#" title="블라우스">sub1 블라우스</a></li>
                       <li><a href="#" title="티">티</a></li>
                       <li><a href="#" title="셔츠">셔츠</a></li>
                       <li><a href="#" title="니트">니트</a></li>
@@ -59,14 +67,21 @@
           </li>
           <li class="col">
             <!-- <a href="#" class="main-btn" title="아우터">아우터</a> -->
-            <a href="#" :class="['main-btn', { on: menu2 }]" title="아우터" @mouseenter="mouseenterMenu2">아우터</a>
-            <div class="sub sub2">
+            <a
+              href="#"
+              :class="['main-btn', { on: menu2 }]"
+              title="아우터"
+              @mouseenter="mouseenterMenu2"
+              >아우터</a
+            >
+            <!-- <div class="sub sub2"> -->
+            <div :class="['sub', 'sub2', { on: menu2 }]">
               <div class="sub-container">
                 <ul>
                   <li>
                     <!-- 1열 -->
                     <ul>
-                      <li><a href="#" title="블라우스">블라우스</a></li>
+                      <li><a href="#" title="블라우스">sub2 블라우스</a></li>
                       <li><a href="#" title="티">티</a></li>
                       <li><a href="#" title="셔츠">셔츠</a></li>
                       <li><a href="#" title="니트">니트</a></li>
@@ -105,14 +120,21 @@
           </li>
           <li class="col">
             <!-- <a href="#" class="main-btn" title="팬츠">팬츠</a> -->
-            <a href="#" :class="['main-btn', { on: menu3 }]" title="팬츠" @mouseenter="mouseenterMenu3">팬츠</a>
-            <div class="sub sub3">
+            <a
+              href="#"
+              :class="['main-btn', { on: menu3 }]"
+              title="팬츠"
+              @mouseenter="mouseenterMenu3"
+              >팬츠</a
+            >
+            <!-- <div class="sub sub3"> -->
+            <div :class="['sub', 'sub3', { on: menu3 }]">
               <div class="sub-container">
                 <ul>
                   <li>
                     <!-- 1열 -->
                     <ul>
-                      <li><a href="#" title="블라우스">블라우스</a></li>
+                      <li><a href="#" title="블라우스">sub3 블라우스</a></li>
                       <li><a href="#" title="티">티</a></li>
                       <li><a href="#" title="셔츠">셔츠</a></li>
                       <li><a href="#" title="니트">니트</a></li>
@@ -151,14 +173,21 @@
           </li>
           <li class="col">
             <!-- <a href="#" class="main-btn" title="악세서리">악세서리</a> -->
-            <a href="#" :class="['main-btn', { on: menu4 }]" title="악세서리" @mouseenter="mouseenterMenu4">악세서리</a>
-            <div class="sub sub4">
+            <a
+              href="#"
+              :class="['main-btn', { on: menu4 }]"
+              title="악세서리"
+              @mouseenter="mouseenterMenu4"
+              >악세서리</a
+            >
+            <!-- <div class="sub sub4"> -->
+            <div :class="['sub', 'sub4', { on: menu4 }]">
               <div class="sub-container">
                 <ul>
                   <li>
                     <!-- 1열 -->
                     <ul>
-                      <li><a href="#" title="블라우스">블라우스</a></li>
+                      <li><a href="#" title="블라우스">sub4 블라우스</a></li>
                       <li><a href="#" title="티">티</a></li>
                       <li><a href="#" title="셔츠">셔츠</a></li>
                       <li><a href="#" title="니트">니트</a></li>
@@ -251,7 +280,15 @@ export default {
 
       this.menu4 = true;
     },
-  }
+    // 네이게이션 GNB
+    // 마우스 아웃
+    mouseleaveNav() {
+      this.menu1 = false;
+      this.menu2 = false;
+      this.menu3 = false;
+      this.menu4 = false;
+    },
+  },
 };
 </script>
 
@@ -347,6 +384,23 @@ export default {
   left: 0;
   width: 100%;
   background: #2c2a29;
+  overflow: hidden;
+}
+
+/* 서브메뉴 높이 설정 */
+#wrap #header .right #nav > ul > li .sub.on {
+  display: block;
+  animation: sub-ani 0.3s forwards;
+  /* animation: sub-ani 0.5s forwards; */
+}
+
+@keyframes sub-ani {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 160px;
+  }
 }
 
 /* #wrap #header .right #nav > ul > li .sub1 {display: block;} */
