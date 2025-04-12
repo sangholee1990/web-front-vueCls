@@ -3,11 +3,23 @@
     <div class="left">
       <div class="container">
         <div class="title">
-          <button class="notice-btn" title="공지사항">공지사항</button>
-          <button class="gallery-btn" title="갤러리">갤러리</button>
+          <button
+            :class="['notice-btn', { on: gallery }]"
+            title="공지사항"
+            @click="clickNotice"
+          >
+            공지사항
+          </button>
+          <button
+            :class="['gallery-btn', { on: gallery }]"
+            title="갤러리"
+            @click="clickGallery"
+          >
+            갤러리
+          </button>
         </div>
         <div class="content">
-          <div class="notice-box">
+          <div :class="['notice-box', { on: gallery }]">
             <ul>
               <li>
                 <a href="#" class="popup-btn" title="9월 just 쇼핑몰 세일 안내!"
@@ -40,7 +52,7 @@
               </li>
             </ul>
           </div>
-          <div class="gallery-box">
+          <div :class="['gallery-box', { on: gallery }]">
             <ul>
               <li>
                 <a
@@ -100,53 +112,66 @@
     </div>
   </section>
 </template>
-  
-  
-<script>
-import $ from "jquery";
 
+<script>
 export default {
   name: "Section2Component",
-  created() {
-    $(() => {
-   // 갤러리버튼 클릭 이벤트
-        $('.gallery-btn').on({
-            click(){
-                $('.gallery-btn').addClass('on');
-                $('.notice-btn').addClass('on');
-                $('.notice-box').hide();
-                $('.gallery-box').show();
-            }
-        })
+  props: [],
+  data() {
+    return {
+      gallery: false,
+      // gallery: true,
+    };
+  },
+  methods: {
+    clickGallery() {
+      this.gallery = true;
+    },
+    clickNotice() {
+      this.gallery = false;
+    },
+  },
 
-          // 공지사항버튼 클릭 이벤트
-          $('.notice-btn').on({
-            click(){
-                $('.gallery-btn').removeClass('on');
-                $('.notice-btn').removeClass('on');
-                $('.notice-box').show();
-                $('.gallery-box').hide();
-            }
-        })
+  // created() {
+  //   $(() => {
+  //  // 갤러리버튼 클릭 이벤트
+  //       $('.gallery-btn').on({
+  //           click(){
+  //               $('.gallery-btn').addClass('on');
+  //               $('.notice-btn').addClass('on');
+  //               $('.notice-box').hide();
+  //               $('.gallery-box').show();
+  //           }
+  //       })
 
-        // 팝업버튼 클릭 이벤트
-        $('.popup-btn').on({
-            click(){
-                $('.popup').css({display:'flex'}); // show().css({display:'flex'})
-            }
-        });
-        // 팝업닫기버튼 클릭 이벤트
-        $('.close-btn').on({
-            click(){
-                // $('.popup').hide();
-                $('.popup').css({display:'none'}); // hide()
-            }
-        });
-    })
-  }
+  //         // 공지사항버튼 클릭 이벤트
+  //         $('.notice-btn').on({
+  //           click(){
+  //               $('.gallery-btn').removeClass('on');
+  //               $('.notice-btn').removeClass('on');
+  //               $('.notice-box').show();
+  //               $('.gallery-box').hide();
+  //           }
+  //       })
+
+  //       // 팝업버튼 클릭 이벤트
+  //       $('.popup-btn').on({
+  //           click(){
+  //               $('.popup').css({display:'flex'}); // show().css({display:'flex'})
+  //           }
+  //       });
+  //       // 팝업닫기버튼 클릭 이벤트
+  //       $('.close-btn').on({
+  //           click(){
+  //               // $('.popup').hide();
+  //               $('.popup').css({display:'none'}); // hide()
+  //           }
+  //       });
+  //   })
+  // }
 };
 </script>
-  
+
 <style scoped>
 #wrap #main #section2 {
   width: 100%;
@@ -231,7 +256,13 @@ export default {
 /* 공지사항 박스 개별스타일 */
 #wrap #main #section2 .left .container .content div.notice-box {
   padding-top: 8px;
+  display: block;
 }
+
+#wrap #main #section2 .left .container .content div.notice-box.on {
+  display: none;
+}
+
 #wrap #main #section2 .left .container .content div.notice-box ul {
   width: 100%;
 }
@@ -292,6 +323,11 @@ export default {
   background: #fff;
   display: none;
 }
+
+#wrap #main #section2 .left .container .content div.gallery-box.on {
+  display: block;
+}
+
 #wrap #main #section2 .left .container .content div.gallery-box ul {
   width: 100%;
   height: 100%;
