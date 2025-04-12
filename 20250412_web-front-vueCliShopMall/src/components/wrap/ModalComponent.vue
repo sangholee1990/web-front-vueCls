@@ -1,8 +1,8 @@
 <template>
-  <div :class="['popup', { on: popup }]">
+  <div :class="['popup', { on: isShow }]">
     <div class="container">
       <div class="title">
-        <h1>9월 JUST 쇼핑몰 세일 안내</h1>
+        <h1>{{ msg }}</h1>
       </div>
       <div class="content">
         <ul>
@@ -31,12 +31,13 @@ export default {
   props: ['isShow', 'msg'],
   data() {
     return {
-      popup: false,
+      // popup: false,
     };
   },
   methods: {
     clickCloseBtn() {
-      this.popup = false;
+      // this.popup = false;
+      this.$emit("clickCloseBtnEmit");
     },
   },
 };

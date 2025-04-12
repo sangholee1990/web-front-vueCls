@@ -3,7 +3,7 @@
     <header-component />
     <main-component @click-modal-open-emit='clickModalOpenEmit' />
     <footer-component />
-    <modal-component :is-show="isShow" :msg="msg" />
+    <modal-component :is-show="isShow" :msg="msg" @click-close-btn-emit='clickCloseBtnEmit' />
   </div>
 </template>
 
@@ -35,8 +35,11 @@ export default {
 
       // 모달 컴포넌트에게 프롭스로 데이터 전달
       // this.$props()
-
-    }
+    },
+    
+    clickCloseBtnEmit() {
+      this.isShow = false;
+    },
   }
 };
 </script>
