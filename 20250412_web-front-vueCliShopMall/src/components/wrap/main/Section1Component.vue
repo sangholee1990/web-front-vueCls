@@ -23,32 +23,53 @@
     </div>
   </section>
 </template>
-  
-  
-  <script>
-import $ from "jquery";
+
+<script>
+// import $ from "jquery";
 
 export default {
   name: "Section1Component",
-  created() {
+  // created() {
+  mounted() {
     //1. 변수
     let cnt = 0;
 
+    // DOM 선택자 => 마운트 되고 난 후에 사용
+
+    // 슬라이드 대상 선택자
+    const slide = document.querySelectorAll(".slide");
+    console.log(slide);
+
     //2. 메인슬라이드함수 3개 우측에서 좌측으로 이동  0 1 2
     function mainSlide() {
-      console.log("현재: " + (cnt - 1 < 0 ? 2 : cnt - 1), "다음: " + cnt);
-      $(".slide").css({ zIndex: 1, opacity: 1 });
-      $(".slide").eq(cnt).css({ zIndex: 2 });
-      $(".slide")
-        .eq(cnt - 1 < 0 ? 2 : cnt - 1)
-        .css({ zIndex: 3 })
-        .animate({ opacity: 0 }, 1000);
+      console.log(cnt);
+
+      slide.forEach(function (item, idx) {
+        console.log(idx, item);
+        item.style = 'z-index: 1; opacity: 1';
+      });
+
+      // 다음 슬라이드
+      slide[cnt]
+
+      // 현재 슬라이드
+      slide[cnt - 1]
+
+      // 모든 슬라이드 3개 z-index 1, opacity 1 설정 초기화
+
+      //   console.log("현재: " + (cnt - 1 < 0 ? 2 : cnt - 1), "다음: " + cnt);
+      //   $(".slide").css({ zIndex: 1, opacity: 1 });
+      //   $(".slide").eq(cnt).css({ zIndex: 2 });
+      //   $(".slide")
+      //     .eq(cnt - 1 < 0 ? 2 : cnt - 1)
+      //     .css({ zIndex: 3 })
+      //     .animate({ opacity: 0 }, 1000);
     }
 
     //3. 다음카운트함수
     function mextCount() {
       cnt++;
-      if (cnt > 2) cnt = 0;
+      if (cnt >= 3) cnt = 0;
       mainSlide();
     }
 
@@ -60,7 +81,7 @@ export default {
   },
 };
 </script>
-  
+
 <style scoped>
 /* 메인 */
 #wrap #main #section1 {
