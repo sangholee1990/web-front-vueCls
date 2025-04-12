@@ -12,7 +12,8 @@
       <nav id="nav">
         <ul>
           <li class="col">
-            <a href="#" class="main-btn" title="탑">탑</a>
+            <!-- <a href="#" class="main-btn" title="탑">탑</a> -->
+            <a href="#" :class="['main-btn', { on: menu1 }]" title="탑" @mouseenter="mouseenterMenu1">탑</a>
             <div class="sub sub1">
               <div class="sub-container">
                 <ul>
@@ -57,7 +58,8 @@
             </div>
           </li>
           <li class="col">
-            <a href="#" class="main-btn" title="아우터">아우터</a>
+            <!-- <a href="#" class="main-btn" title="아우터">아우터</a> -->
+            <a href="#" :class="['main-btn', { on: menu2 }]" title="아우터" @mouseenter="mouseenterMenu2">아우터</a>
             <div class="sub sub2">
               <div class="sub-container">
                 <ul>
@@ -102,7 +104,8 @@
             </div>
           </li>
           <li class="col">
-            <a href="#" class="main-btn" title="팬츠">팬츠</a>
+            <!-- <a href="#" class="main-btn" title="팬츠">팬츠</a> -->
+            <a href="#" :class="['main-btn', { on: menu3 }]" title="팬츠" @mouseenter="mouseenterMenu3">팬츠</a>
             <div class="sub sub3">
               <div class="sub-container">
                 <ul>
@@ -147,7 +150,8 @@
             </div>
           </li>
           <li class="col">
-            <a href="#" class="main-btn" title="악세서리">악세서리</a>
+            <!-- <a href="#" class="main-btn" title="악세서리">악세서리</a> -->
+            <a href="#" :class="['main-btn', { on: menu4 }]" title="악세서리" @mouseenter="mouseenterMenu4">악세서리</a>
             <div class="sub sub4">
               <div class="sub-container">
                 <ul>
@@ -204,8 +208,50 @@ export default {
   data() {
     return {
       logo: "JUST 쇼핑몰",
+      menu1: false,
+      menu2: false,
+      menu3: false,
+      menu4: false,
+      // menu: true,
+      // mouseenterMenu
     };
   },
+  // 마우스 엔터 이벤트
+  // 실행할 콜백함수
+  methods: {
+    mouseenterMenu1() {
+      this.menu1 = false;
+      this.menu2 = false;
+      this.menu3 = false;
+      this.menu4 = false;
+
+      this.menu1 = true;
+    },
+    mouseenterMenu2() {
+      this.menu1 = false;
+      this.menu2 = false;
+      this.menu3 = false;
+      this.menu4 = false;
+
+      this.menu2 = true;
+    },
+    mouseenterMenu3() {
+      this.menu1 = false;
+      this.menu2 = false;
+      this.menu3 = false;
+      this.menu4 = false;
+
+      this.menu3 = true;
+    },
+    mouseenterMenu4() {
+      this.menu1 = false;
+      this.menu2 = false;
+      this.menu3 = false;
+      this.menu4 = false;
+
+      this.menu4 = true;
+    },
+  }
 };
 </script>
 
