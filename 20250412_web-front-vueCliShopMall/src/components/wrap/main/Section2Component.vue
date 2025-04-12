@@ -22,7 +22,7 @@
           <div :class="['notice-box', { on: gallery }]">
             <ul>
               <li>
-                <a href="#" class="popup-btn" title="9월 just 쇼핑몰 세일 안내!"
+                <a href="#" class="popup-btn" title="9월 just 쇼핑몰 세일 안내!" @click="clickModalOpen('9월 just 쇼핑몰 세일 안내!')"
                   >9월 just 쇼핑몰 세일 안내!</a
                 ><span>2018-09-03</span>
               </li>
@@ -130,45 +130,13 @@ export default {
     clickNotice() {
       this.gallery = false;
     },
+    // 레이어 팝업 열기
+    // 에밋 Emit: 자식 컴포넌트 => 부모 컴포넌트 통신 
+    // 프롭스 props: 부모 컴포넌트 => 자식 컴포넌트 통신 
+    clickModalOpen(z) {  
+      this.$emit("clickModalOpenEmit", z)
+    },
   },
-
-  // created() {
-  //   $(() => {
-  //  // 갤러리버튼 클릭 이벤트
-  //       $('.gallery-btn').on({
-  //           click(){
-  //               $('.gallery-btn').addClass('on');
-  //               $('.notice-btn').addClass('on');
-  //               $('.notice-box').hide();
-  //               $('.gallery-box').show();
-  //           }
-  //       })
-
-  //         // 공지사항버튼 클릭 이벤트
-  //         $('.notice-btn').on({
-  //           click(){
-  //               $('.gallery-btn').removeClass('on');
-  //               $('.notice-btn').removeClass('on');
-  //               $('.notice-box').show();
-  //               $('.gallery-box').hide();
-  //           }
-  //       })
-
-  //       // 팝업버튼 클릭 이벤트
-  //       $('.popup-btn').on({
-  //           click(){
-  //               $('.popup').css({display:'flex'}); // show().css({display:'flex'})
-  //           }
-  //       });
-  //       // 팝업닫기버튼 클릭 이벤트
-  //       $('.close-btn').on({
-  //           click(){
-  //               // $('.popup').hide();
-  //               $('.popup').css({display:'none'}); // hide()
-  //           }
-  //       });
-  //   })
-  // }
 };
 </script>
 

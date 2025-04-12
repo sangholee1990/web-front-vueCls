@@ -1,5 +1,5 @@
 <template>
-  <div class="popup">
+  <div :class="['popup', { on: popup }]">
     <div class="container">
       <div class="title">
         <h1>9월 JUST 쇼핑몰 세일 안내</h1>
@@ -17,19 +17,31 @@
         </ul>
       </div>
       <div class="button-box">
-        <button class="close-btn" title="닫기">닫기</button>
+        <button class="close-btn" title="닫기" @click="clickCloseBtn">
+          닫기
+        </button>
       </div>
     </div>
   </div>
 </template>
-  
-  
+
 <script>
 export default {
   name: "ModalComponent",
+  props: ['isShow', 'msg'],
+  data() {
+    return {
+      popup: false,
+    };
+  },
+  methods: {
+    clickCloseBtn() {
+      this.popup = false;
+    },
+  },
 };
 </script>
-  
+
 <style scoped>
 /* 팝업창 */
 /* 

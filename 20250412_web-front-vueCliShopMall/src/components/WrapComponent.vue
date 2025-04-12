@@ -1,9 +1,9 @@
 <template>
   <div id="wrap">
     <header-component />
-    <main-component />
+    <main-component @click-modal-open-emit='clickModalOpenEmit' />
     <footer-component />
-    <modal-component />
+    <modal-component :is-show="isShow" :msg="msg" />
   </div>
 </template>
 
@@ -21,6 +21,23 @@ export default {
     "footer-component": FooterComponent,
     "modal-component": ModalComponent,
   },
+  data() {
+    return {
+      isShow: false,
+      msg: "",
+    }
+  },
+  methods: {
+    clickModalOpenEmit(z) {
+      // alert('WrapComponent : ' + z);
+      this.isShow = true;
+      this.msg = z;
+
+      // 모달 컴포넌트에게 프롭스로 데이터 전달
+      // this.$props()
+
+    }
+  }
 };
 </script>
 

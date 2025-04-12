@@ -1,7 +1,7 @@
 <template>
   <main id="main">
     <section1-component />
-    <section2-component />
+    <section2-component @click-modal-open-emit='clickModalOpenEmit' />
   </main>
 </template>
 
@@ -16,6 +16,11 @@ export default {
     "section1-component": Section1Component,
     "section2-component": Section2Component,
   },
+  methods: {
+    clickModalOpenEmit(z) {
+      this.$emit('clickModalOpenEmit', z);
+    }
+  }
 };
 </script>
 
