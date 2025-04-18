@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "use": "nvm use 20.18.1",
     "install": "npm install --no-audit",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
