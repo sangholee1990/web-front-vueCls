@@ -10,7 +10,8 @@
       <nav id="nav" @mouseleave="mouseleaveNav">
         <ul>
           <li v-for="item, idx in gnb" :key="item.메인메뉴" class="col" :data-key="item.메인메뉴">
-            <a href="#" :class="['main-btn', { on: menu[idx] }]" title={{item.메인메뉴}} @mouseenter="mouseenterMenu(idx)">{{item.메인메뉴}}</a>
+            <a href="#" :class="['main-btn', { on: menu[idx] }]" title={{item.메인메뉴}}
+              @mouseenter="mouseenterMenu(idx)">{{ item.메인메뉴 }}</a>
             <div :class="['sub', `sub${idx + 1}`, { on: menu[idx], off: nav }]">
               <div class="sub-container">
                 <ul>
