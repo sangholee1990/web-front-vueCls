@@ -4,21 +4,10 @@
       <div class="slide-content">
         <ul class="slide-wrap">
 
-          <li 
-            v-for="item,idx in 슬라이드"
-            :key="item.타이틀"
-            :data-key="item.타이틀"
-            :class="['slide', `slide${idx+1}`]"     
-            
-          >
-            <a 
-              href="#" 
-              :title="item.타이틀"  
-              :style="item.배경이미지"           
-              >
-                <span>{{item.타이틀}}</span>
-            </a
-          >
+          <li v-for="item, idx in 슬라이드" :key="item.타이틀" :data-key="item.타이틀" :class="['slide', `slide${idx + 1}`]">
+            <a href="#" :title="item.타이틀" :style="item.배경이미지">
+              <span>{{ item.타이틀 }}</span>
+            </a>
           </li>
 
 
@@ -27,62 +16,73 @@
     </div>
   </section>
 </template>
-  
-  
-  <script>
+
+
+<script>
 export default {
   name: "Section1Component",
-  data(){
-    return{
-      슬라이드: [
-        {타이틀:"JUST 쇼핑몰 오픈!", 배경이미지:"background-image: url(./images/banner_img.jpg)"},
-        {타이틀:"종합 쇼핑의 새 막을 연다! JUST 쇼핑몰!", 배경이미지:"background-image: url(./images/banner_img2.jpg)"},
-        {타이틀:"JUST쇼핑몰 9월 세일 이벤트 안내", 배경이미지:"background-image: url(./images/banner_img3.png)"}        
-      ]
+  data() {
+    return {
+      슬라이드: []
     }
   },
+  created() {
+    // gnb json 데이터 가져오기
+    fetch("./data/section1.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.슬라이드 = res.슬라이드;
+      })
+      .catch((err) => console.log(err));
+  },
   mounted() {
+
     // 자바스크립트 사용 => 마운트 후에 사용
+    function mainSlideFn() {
 
-    //1. 변수
-    let cnt = 0;
+      //1. 변수
+      let cnt = 0;
 
-    // DOM 선택자 => 마운트 되고 난 후에 사용
-    // 슬라이드 대상 선택자
-    const slide = document.querySelectorAll(".slide"); // 3개
+      // DOM 선택자 => 마운트 되고 난 후에 사용
+      // 슬라이드 대상 선택자
+      const slide = document.querySelectorAll(".slide"); // 3개
 
-    //2. 메인슬라이드함수 3개 우측에서 좌측으로 이동  0 1 2
-    function mainSlide() {
-      // 모든 슬라이드 .slide 3개 z-index: 1 설정 초기화
-      // 모든 슬라이드 .slide 3개 opacity: 1 설정 초기화
-      slide.forEach(function (item) {
-        item.style = "z-index:1; opacity:1";
-      });
+      //2. 메인슬라이드함수 3개 우측에서 좌측으로 이동  0 1 2
+      function mainSlide() {
+        // 모든 슬라이드 .slide 3개 z-index: 1 설정 초기화
+        // 모든 슬라이드 .slide 3개 opacity: 1 설정 초기화
+        slide.forEach(function (item) {
+          item.style = "z-index:1; opacity:1";
+        });
 
-      // 다음슬라이드 z-index: 2
-      slide[cnt].style = "z-index:2";
-      // 현재슬라이드 z-index: 3
-      slide[cnt - 1 < 0 ? 2 : cnt - 1].style = "z-index:3; opacity: 0";
-    }
-
-    //3. 다음카운트함수
-    function mextCount() {
-      cnt++; // 1 2 0 1 2 0 ......
-      if (cnt >= 3) {
-        cnt = 0;
+        // 다음슬라이드 z-index: 2
+        slide[cnt].style = "z-index:2";
+        // 현재슬라이드 z-index: 3
+        slide[cnt - 1 < 0 ? 2 : cnt - 1].style = "z-index:3; opacity: 0";
       }
-      mainSlide();
+
+      //3. 다음카운트함수
+      function mextCount() {
+        cnt++; // 1 2 0 1 2 0 ......
+        if (cnt >= 3) {
+          cnt = 0;
+        }
+        mainSlide();
+      }
+
+      //4. 자동타이머함수
+      function autotimer() {
+        setInterval(mextCount, 3000); // 3초간격 무한반복
+      }
+      autotimer();
     }
 
-    //4. 자동타이머함수
-    function autotimer() {
-      setInterval(mextCount, 3000); // 3초간격 무한반복
-    }
-    autotimer();
+    // 0.1초 후에 실행
+    setTimeout(mainSlideFn, 100);
   },
 };
 </script>
-  
+
 <style lang="scss" scoped>
 /* 메인 */
 
@@ -111,16 +111,17 @@ export default {
           left: 0;
           width: 100%;
           height: 100%;
-          transition: opacity 1s ease-in-out;                 
+          transition: opacity 1s ease-in-out;
         }
 
-      
+
         .slide a {
           display: flex;
           width: 100%;
           height: 100%;
           align-items: center;
           background: url() no-repeat 50% 50%;
+
           span {
             width: 100%;
             height: 70px;
@@ -134,8 +135,9 @@ export default {
           }
         }
 
-        .slide1 {          
+        .slide1 {
           z-index: 3;
+
           a {
             background-position: 50% 30%;
             background-size: 120% auto;
@@ -144,6 +146,7 @@ export default {
 
         .slide2 {
           z-index: 2;
+
           a {
             background-position: 50% 0%;
             background-size: 100% auto;
@@ -152,6 +155,7 @@ export default {
 
         .slide3 {
           z-index: 1;
+
           a {
             background-position: 50% 30%;
             background-size: 110% auto;
@@ -173,5 +177,4 @@ export default {
 }
 
 /* 메인슬라이드 아래에서 위로이동 */
-
 </style>

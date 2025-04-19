@@ -38,16 +38,24 @@ export default {
   props: [],
   data() {
     return {
-      logo: "JUST 쇼핑몰",
-      // menu: [false, false, false, false]
+      logo: "",
       menu: Array(4).fill(false),
       nav: false,
-      gnb: [] 
+      // public/data/header.json
+      gnb: []
     };
   },
   created() {
-    console.log(this.gnb);
-    console.log(this.gnb.length);
+    // gnb json 데이터 가져오기
+    fetch("./data/header.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.gnb = res.gnb;
+        this.logo = res.logo;
+        this.nav = res.nav;
+      })
+      .catch((err) => console.log(err));
+
   },
   methods: {
     // 마우스 이벤트 전달 함수

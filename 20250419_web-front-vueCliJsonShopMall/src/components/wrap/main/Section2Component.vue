@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "Section2Component",
   props: [],
@@ -66,28 +68,34 @@ export default {
     return {
       gallery: false,
       // gallery: true,
-      공지사항: [
-        { 공지글: "9월 just 쇼핑몰 세일 안내!", 날짜: "2018-09-03" },
-        { 공지글: "불편한 경험은 저희에게도 알려주세요.", 날짜: "2018-09-02" },
-        { 공지글: "카카오톡 친구 추가하고 할인쿠폰 받아 가세요.", 날짜: "2018-09-01" },
-        { 공지글: "다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?", 날짜: "2018-08-31" },
-        { 공지글: "just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!", 날짜: "2018-08-30" },
-      ],
-      갤러리: [
-        { 타이틀: "청바지, 블라우스, 파우치 홍보 여성 모델 이미지", 이미지: "./images/img1.jpg" },
-        { 타이틀: "청바지, 크로스백, 썬글라스, 수영복 홍보 이미지", 이미지: "./images/img2.jpg" },
-        { 타이틀: "노란 원피스 입은 모델 이미지", 이미지: "./images/img3.jpg" },
-      ],
-      배너: [
-        { 타이틀: "여름 마지막 세일", 이미지: "background-image: url(./images/image4.jpg)" },
-      ],
-      바로가기: [
-        { 타이틀: "할인정보", 이미지: "background-image: url(./images/image2.jpg)" },
-        { 타이틀: "이벤트정보", 이미지: "background-image: url(./images/image.jpg)" },
-        { 타이틀: "고객정보", 이미지: "background-image: url(./images/image3.jpg)" },
-      ],
-
+      공지사항: [],
+      갤러리: [],
+      배너: [],
+      바로가기: [],
     };
+  },
+  created() {
+
+    // fetch("./data/section2.json")
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     this.공지사항 = res.공지사항;
+    //     this.갤러리 = res.갤러리;
+    //     this.배너 = res.배너;
+    //     this.바로가기 = res.바로가기;
+    //   })
+    //   .catch((err) => console.log(err));
+
+    axios({ url: './data/section2.json', method: 'GET' })
+      .then((res) => {
+        this.공지사항 = res.data.공지사항;
+        this.갤러리 = res.data.갤러리;
+        this.배너 = res.data.배너;
+        this.바로가기 = res.data.바로가기;
+      }).catch((err) => {
+        console.log(err);
+      });
+
   },
   methods: {
     clickGallery() {
