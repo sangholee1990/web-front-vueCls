@@ -9,182 +9,16 @@
     <div class="right">
       <nav id="nav" @mouseleave="mouseleaveNav">
         <ul>
-          <li class="col">
-            <a href="#" :class="['main-btn', { on: menu1 }]" title="탑" @mouseenter="mouseenterMenu1">탑</a>
-            <div :class="['sub', 'sub1', { on: menu1, off: nav }]">
+          <li v-for="item, idx in gnb" :key="item.메인메뉴" class="col" :data-key="item.메인메뉴">
+            <a href="#" :class="['main-btn', { on: menu[idx] }]" title={{item.메인메뉴}} @mouseenter="mouseenterMenu(idx)">{{item.메인메뉴}}</a>
+            <div :class="['sub', `sub${idx + 1}`, { on: menu[idx], off: nav }]">
               <div class="sub-container">
                 <ul>
-                  <li>
-                    <!-- 1열 -->
+                  <li v-for="item2, idx2 in item.서브메뉴" :key="idx2" :data-key="idx2">
                     <ul>
-                      <li><a href="#" title="블라우스">sub1 블라우스</a></li>
-                      <li><a href="#" title="티">티</a></li>
-                      <li><a href="#" title="셔츠">셔츠</a></li>
-                      <li><a href="#" title="니트">니트</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 2열 -->
-                    <ul>
-                      <li><a href="#" title="자켓">자켓</a></li>
-                      <li><a href="#" title="코트">코트</a></li>
-                      <li><a href="#" title="가디건">가디건</a></li>
-                      <li><a href="#" title="머플러">머플러</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 3열 -->
-                    <ul>
-                      <li><a href="#" title="청바지">청바지</a></li>
-                      <li><a href="#" title="짧은바지">짧은바지</a></li>
-                      <li><a href="#" title="긴바지">긴바지</a></li>
-                      <li><a href="#" title="레깅스">레깅스</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 4열 -->
-                    <ul>
-                      <li><a href="#" title="귀고리">귀고리</a></li>
-                      <li><a href="#" title="목걸이">목걸이</a></li>
-                      <li><a href="#" title="반지">반지</a></li>
-                      <li><a href="#" title="팔찌">팔찌</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li class="col">
-            <a href="#" title="아우터" :class="['main-btn', { on: menu2 }]" @mouseenter="mouseenterMenu2">아우터</a>
-            <div :class="['sub', 'sub2', { on: menu2, off: nav }]">
-              <div class="sub-container">
-                <ul>
-                  <li>
-                    <!-- 1열 -->
-                    <ul>
-                      <li><a href="#" title="블라우스">sub2 블라우스</a></li>
-                      <li><a href="#" title="티">티</a></li>
-                      <li><a href="#" title="셔츠">셔츠</a></li>
-                      <li><a href="#" title="니트">니트</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 2열 -->
-                    <ul>
-                      <li><a href="#" title="자켓">자켓</a></li>
-                      <li><a href="#" title="코트">코트</a></li>
-                      <li><a href="#" title="가디건">가디건</a></li>
-                      <li><a href="#" title="머플러">머플러</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 3열 -->
-                    <ul>
-                      <li><a href="#" title="청바지">청바지</a></li>
-                      <li><a href="#" title="짧은바지">짧은바지</a></li>
-                      <li><a href="#" title="긴바지">긴바지</a></li>
-                      <li><a href="#" title="레깅스">레깅스</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 4열 -->
-                    <ul>
-                      <li><a href="#" title="귀고리">귀고리</a></li>
-                      <li><a href="#" title="목걸이">목걸이</a></li>
-                      <li><a href="#" title="반지">반지</a></li>
-                      <li><a href="#" title="팔찌">팔찌</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li class="col">
-            <a href="#" class="main-btn" title="팬츠" :class="['main-btn', { on: menu3 }]"
-              @mouseenter="mouseenterMenu3">팬츠</a>
-            <div :class="['sub', 'sub3', { on: menu3, off: nav }]">
-              <div class="sub-container">
-                <ul>
-                  <li>
-                    <!-- 1열 -->
-                    <ul>
-                      <li><a href="#" title="블라우스">sub3 블라우스</a></li>
-                      <li><a href="#" title="티">티</a></li>
-                      <li><a href="#" title="셔츠">셔츠</a></li>
-                      <li><a href="#" title="니트">니트</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 2열 -->
-                    <ul>
-                      <li><a href="#" title="자켓">자켓</a></li>
-                      <li><a href="#" title="코트">코트</a></li>
-                      <li><a href="#" title="가디건">가디건</a></li>
-                      <li><a href="#" title="머플러">머플러</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 3열 -->
-                    <ul>
-                      <li><a href="#" title="청바지">청바지</a></li>
-                      <li><a href="#" title="짧은바지">짧은바지</a></li>
-                      <li><a href="#" title="긴바지">긴바지</a></li>
-                      <li><a href="#" title="레깅스">레깅스</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 4열 -->
-                    <ul>
-                      <li><a href="#" title="귀고리">귀고리</a></li>
-                      <li><a href="#" title="목걸이">목걸이</a></li>
-                      <li><a href="#" title="반지">반지</a></li>
-                      <li><a href="#" title="팔찌">팔찌</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li class="col">
-            <a href="#" class="main-btn" title="악세서리" :class="['main-btn', { on: menu4 }]"
-              @mouseenter="mouseenterMenu4">악세서리</a>
-            <div :class="['sub', 'sub4', { on: menu4, off: nav }]">
-              <div class="sub-container">
-                <ul>
-                  <li>
-                    <!-- 1열 -->
-                    <ul>
-                      <li><a href="#" title="블라우스">sub4 블라우스</a></li>
-                      <li><a href="#" title="티">티</a></li>
-                      <li><a href="#" title="셔츠">셔츠</a></li>
-                      <li><a href="#" title="니트">니트</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 2열 -->
-                    <ul>
-                      <li><a href="#" title="자켓">자켓</a></li>
-                      <li><a href="#" title="코트">코트</a></li>
-                      <li><a href="#" title="가디건">가디건</a></li>
-                      <li><a href="#" title="머플러">머플러</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 3열 -->
-                    <ul>
-                      <li><a href="#" title="청바지">청바지</a></li>
-                      <li><a href="#" title="짧은바지">짧은바지</a></li>
-                      <li><a href="#" title="긴바지">긴바지</a></li>
-                      <li><a href="#" title="레깅스">레깅스</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <!-- 4열 -->
-                    <ul>
-                      <li><a href="#" title="귀고리">귀고리</a></li>
-                      <li><a href="#" title="목걸이">목걸이</a></li>
-                      <li><a href="#" title="반지">반지</a></li>
-                      <li><a href="#" title="팔찌">팔찌</a></li>
+                      <li v-for="item3, idx3 in item2" :key="idx3" :data-key="idx3">
+                        <a href="#" :title="item3">{{ item3 }}</a>
+                      </li>
                     </ul>
                   </li>
                 </ul>
@@ -204,60 +38,60 @@ export default {
   data() {
     return {
       logo: "JUST 쇼핑몰",
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      menu4: false,
+      // menu: [false, false, false, false]
+      menu: Array(4).fill(false),
       nav: false,
+      gnb: [
+        {
+          메인메뉴: '탑',
+          서브메뉴: [
+            ["sub1 블라우스", "티", "셔츠", "니트"],
+            ["자켓", "코트", "셔츠", "머플러"],
+            ["청바지", "짧은바지", "긴바지", "레깅스"],
+            ["귀고리", "목걸이", "반지", "레깅스"],
+          ]
+        },
+        {
+          메인메뉴: '아우터',
+          서브메뉴: [
+            ["sub2 블라우스", "티", "셔츠", "니트"],
+            ["자켓", "코트", "셔츠", "머플러"],
+            ["청바지", "짧은바지", "긴바지", "레깅스"],
+            ["귀고리", "목걸이", "반지", "레깅스"],
+          ]
+        },
+        {
+          메인메뉴: '팬츠',
+          서브메뉴: [
+            ["sub3 블라우스", "티", "셔츠", "니트"],
+            ["자켓", "코트", "셔츠", "머플러"],
+            ["청바지", "짧은바지", "긴바지", "레깅스"],
+            ["귀고리", "목걸이", "반지", "레깅스"],
+          ]
+        },
+        {
+          메인메뉴: '악세사리',
+          서브메뉴: [
+            ["sub4 블라우스", "티", "셔츠", "니트"],
+            ["자켓", "코트", "셔츠", "머플러"],
+            ["청바지", "짧은바지", "긴바지", "레깅스"],
+            ["귀고리", "목걸이", "반지", "레깅스"],
+          ]
+        },
+      ],
     };
   },
+  created() {
+    console.log(this.gnb);
+    console.log(this.gnb.length);
+  },
   methods: {
-    // 메서드스 => 이벤트 함수 구현은 여기에서 한다.
-    // 마우스엔터 이벤트 => 실행할 콜백함수 mouseenterMenu(){}
-    mouseenterMenu1() {
-      // this.데이터상태변수 = '변경할 값'
-      // 초기화
-      this.menu1 = false;
-      this.menu2 = false;
-      this.menu3 = false;
-      this.menu4 = false;
-
-      // 현재 메인버튼 활성화
-      this.menu1 = true;
-    },
-    mouseenterMenu2() {
-      // 초기화
-      this.menu1 = false;
-      this.menu2 = false;
-      this.menu3 = false;
-      this.menu4 = false;
-
-      // 현재 메인버튼 활성화
-      this.menu2 = true;
-    },
-    mouseenterMenu3() {
-      // 초기화
-      this.menu1 = false;
-      this.menu2 = false;
-      this.menu3 = false;
-      this.menu4 = false;
-
-      // 현재 메인버튼 활성화
-      this.menu3 = true;
-    },
-    mouseenterMenu4() {
-      // 초기화
-      this.menu1 = false;
-      this.menu2 = false;
-      this.menu3 = false;
-      this.menu4 = false;
-
-      // 현재 메인버튼 활성화
-      this.menu4 = true;
+    // 마우스 이벤트 전달 함수
+    mouseenterMenu(n) {
+      this.menu = Array(this.gnb.length).fill(false);
+      this.menu[n] = true;
     },
 
-    // 네비게이션(GNB)
-    // 마우스아웃 마우스떠나면
     // 모든 메인버튼, 서브메뉴 초기화
     mouseleaveNav() {
       // 먼저 실행하고 0.3초 =>  300,  1초 => 1000, 3초 => 3000  10초 10000
@@ -265,11 +99,7 @@ export default {
 
       // 메인버튼, 서브메뉴
       setTimeout(() => {
-        // 나중에 실행
-        this.menu1 = false;
-        this.menu2 = false;
-        this.menu3 = false;
-        this.menu4 = false;
+        this.menu = Array(this.gnb.length).fill(false);
 
         // nav 초기화
         this.nav = false;
