@@ -3,81 +3,26 @@
     <div class="left">
       <div class="container">
         <div class="title">
-          <button
-            :class="['notice-btn', { on: gallery }]"
-            title="공지사항"
-            @click="clickNotice"
-          >
+          <button :class="['notice-btn', { on: gallery }]" title="공지사항" @click="clickNotice">
             공지사항
           </button>
-          <button
-            :class="['gallery-btn', { on: gallery }]"
-            title="갤러리"
-            @click="clickGallery"
-          >
+          <button :class="['gallery-btn', { on: gallery }]" title="갤러리" @click="clickGallery">
             갤러리
           </button>
         </div>
         <div class="content">
           <div :class="['notice-box', { on: gallery }]">
             <ul>
-              <li>
-                <a href="#" class="popup-btn" title="9월 just 쇼핑몰 세일 안내!" @click="clickModalOpen('9월 just 쇼핑몰 세일 안내!')"
-                  >9월 just 쇼핑몰 세일 안내!</a
-                ><span>2018-09-03</span>
-              </li>
-              <li>
-                <a href="#" title="불편한 경험은 저희에게도 알려주세요."
-                  >불편한 경험은 저희에게도 알려주세요.</a
-                ><span>2018-09-02</span>
-              </li>
-              <li>
-                <a href="#" title="카카오톡 친구 추가하고 할인쿠폰 받아 가세요."
-                  >카카오톡 친구 추가하고 할인쿠폰 받아 가세요.</a
-                ><span>2018-09-01</span>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  title="다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?"
-                  >다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?</a
-                ><span>2018-08-31</span>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  title="just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!"
-                  >just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!</a
-                ><span>2018-08-30</span>
+              <li v-for="item in 공지사항" :key="item.공지글" :data-key="item.공지글">
+                <a href="#" class="popup-btn" :title="item.공지글" @click="clickModalOpen(item.공지글)">{{ item.공지글
+                }}</a><span>{{ item.날짜 }}</span>
               </li>
             </ul>
           </div>
           <div :class="['gallery-box', { on: gallery }]">
             <ul>
-              <li>
-                <a
-                  href="#"
-                  title="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
-                  ><img
-                    src="../../../../public/images/img1.jpg"
-                    alt="청바지, 블라우스, 파우치 홍보 여성 모델 이미지"
-                /></a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  title="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
-                  ><img
-                    src="../../../../public/images/img2.jpg"
-                    alt="청바지, 크로스백, 썬글라스, 수영복 홍보 이미지"
-                /></a>
-              </li>
-              <li>
-                <a href="#" title="노란 원피스 입은 모델 이미지"
-                  ><img
-                    src="../../../../public/images/img3.jpg"
-                    alt="노란 원피스 입은 모델 이미지"
-                /></a>
+              <li v-for="item in 갤러리" :key="item.타이틀" :data-key="item.타이틀">
+                <a href="#" :title="item.타이틀"><img :src="item.이미지" :alt="item.타이틀" /></a>
               </li>
             </ul>
           </div>
@@ -86,25 +31,25 @@
     </div>
     <div class="center">
       <div class="container">
-        <div class="title hide"><h2>이벤트 배너</h2></div>
-        <div class="content">
-          <a href="#" title="여름 마지막 세일"><h3>여름 마지막 세일</h3></a>
+        <div class="title hide">
+          <h2>이벤트 배너</h2>
+        </div>
+        <div class="content" v-for="item in 배너" :key="item.타이틀" :data-key="item.타이틀">
+          <a href="#" :title="item.타이틀" :style="item.이미지">
+            <h3>{{ item.타이틀 }}</h3>
+          </a>
         </div>
       </div>
     </div>
     <div class="right">
       <div class="container">
-        <div class="title hide"><h2>바로가기 배너</h2></div>
+        <div class="title hide">
+          <h2>바로가기 배너</h2>
+        </div>
         <div class="content">
           <ul>
-            <li>
-              <a href="#" title="할인정보"><span>할인정보</span></a>
-            </li>
-            <li>
-              <a href="#" title="이벤트정보"><span>이벤트정보</span></a>
-            </li>
-            <li>
-              <a href="#" title="고객정보"><span>고객정보</span></a>
+            <li v-for="item in 바로가기" :key="item.타이틀" :data-key="item.타이틀">
+              <a href="#" :title="item.타이틀" :style="item.이미지"><span>{{ item.타이틀 }}</span></a>
             </li>
           </ul>
         </div>
@@ -121,6 +66,27 @@ export default {
     return {
       gallery: false,
       // gallery: true,
+      공지사항: [
+        { 공지글: "9월 just 쇼핑몰 세일 안내!", 날짜: "2018-09-03" },
+        { 공지글: "불편한 경험은 저희에게도 알려주세요.", 날짜: "2018-09-02" },
+        { 공지글: "카카오톡 친구 추가하고 할인쿠폰 받아 가세요.", 날짜: "2018-09-01" },
+        { 공지글: "다른곳에선 못보는~ 매력발산 아이템들 구경해 보실래요?", 날짜: "2018-08-31" },
+        { 공지글: "just 쇼핑몰을 친구에게 추천하면 할인쿠폰을 드립니다!", 날짜: "2018-08-30" },
+      ],
+      갤러리: [
+        { 타이틀: "청바지, 블라우스, 파우치 홍보 여성 모델 이미지", 이미지: "./images/img1.jpg" },
+        { 타이틀: "청바지, 크로스백, 썬글라스, 수영복 홍보 이미지", 이미지: "./images/img2.jpg" },
+        { 타이틀: "노란 원피스 입은 모델 이미지", 이미지: "./images/img3.jpg" },
+      ],
+      배너: [
+        { 타이틀: "여름 마지막 세일", 이미지: "background-image: url(./images/image4.jpg)" },
+      ],
+      바로가기: [
+        { 타이틀: "할인정보", 이미지: "background-image: url(./images/image2.jpg)" },
+        { 타이틀: "이벤트정보", 이미지: "background-image: url(./images/image.jpg)" },
+        { 타이틀: "고객정보", 이미지: "background-image: url(./images/image3.jpg)" },
+      ],
+
     };
   },
   methods: {
@@ -133,7 +99,7 @@ export default {
     // 레이어 팝업 열기
     // 에밋 Emit: 자식 컴포넌트 => 부모 컴포넌트 통신 
     // 프롭스 props: 부모 컴포넌트 => 자식 컴포넌트 통신 
-    clickModalOpen(z) {  
+    clickModalOpen(z) {
       this.$emit("clickModalOpenEmit", z)
     },
   },
@@ -210,7 +176,7 @@ export default {
         position: relative;
         z-index: 1;
 
-        > div {
+        >div {
           width: 100%;
           height: 100%;
           padding: 0 10px;
@@ -316,6 +282,7 @@ export default {
     }
   }
 
+  /* 배너 */
   .center {
     width: 33.333%;
     height: 100%;
@@ -337,7 +304,7 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: url(../../../../public/images/image4.jpg) no-repeat 50% 50%;
+          background: url() no-repeat 50% 50%;
           background-size: cover;
 
           h3 {
@@ -397,17 +364,17 @@ export default {
               font-weight: 600;
             }
 
-            &:nth-child(1) a {
-              background-image: url(../../../../public/images/image2.jpg);
-            }
+            // &:nth-child(1) a {
+            //   background-image: url(../../../../public/images/image2.jpg);
+            // }
 
-            &:nth-child(2) a {
-              background-image: url(../../../../public/images/image.jpg);
-            }
+            // &:nth-child(2) a {
+            //   background-image: url(../../../../public/images/image.jpg);
+            // }
 
-            &:nth-child(3) a {
-              background-image: url(../../../../public/images/image3.jpg);
-            }
+            // &:nth-child(3) a {
+            //   background-image: url(../../../../public/images/image3.jpg);
+            // }
           }
         }
       }

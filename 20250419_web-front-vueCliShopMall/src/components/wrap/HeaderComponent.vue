@@ -165,7 +165,8 @@ export default {
 
     #nav {
       width: 700px;
-      margin: 49px 20px 0 auto;
+      // margin: 49px 20px 0 auto;
+      margin: 50px 20px 0 auto;
 
       >ul {
         display: flex;
@@ -173,12 +174,14 @@ export default {
 
         >li {
           width: 25%;
-          border-top: 1px solid #ddd;
-          border-bottom: 1px solid #ddd;
-          border-left: 1px solid #ddd;
+          // border-top: 1px solid #ddd;
+          // border-bottom: 1px solid #ddd;
+          // border-left: 1px solid #ddd;
+          border: 0;
 
           &:last-child {
-            border-right: 1px solid #ddd;
+            // border-right: 1px solid #ddd;
+            border: 0;
           }
 
           >a {

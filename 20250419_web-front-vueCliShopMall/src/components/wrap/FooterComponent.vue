@@ -16,13 +16,13 @@
     <div class="right">
       <div class="container">
         <a href="#" title="인스타그램"
-          ><img src="../../../public/images/icon_1.png" alt="인스타그램"
+          ><img src="./images/icon_1.png" alt="인스타그램"
         /></a>
         <a href="#" title="트위터"
-          ><img src="../../../public/images/icon_2.png" alt="트위터"
+          ><img src="./images/icon_2.png" alt="트위터"
         /></a>
         <a href="#" title="유튜브"
-          ><img src="../../../public/images/icon_3.png" alt="유튜브"
+          ><img src="./images/icon_3.png" alt="유튜브"
         /></a>
       </div>
     </div>
