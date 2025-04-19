@@ -36,8 +36,9 @@ export default {
 };
 </script>
   
-<style scoped>
+<style lang="scss" scoped>
 /* 푸터 */
+
 #wrap #fooeter {
   width: 100%;
   height: 100px;
@@ -46,77 +47,91 @@ export default {
   z-index: 1;
   background: #f4f4f4;
   user-select: none;
+
+  .left {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      width: 100%;
+      height: 40px;
+
+      a {
+        font-size: 24px;
+        font-weight: 600;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          &:nth-child(1) {
+            color: #5ac;
+            filter: grayscale(1);
+            opacity: 0.5;
+          }
+
+          &:nth-child(2) {
+            margin-left: 5px;
+            color: #c5a;
+            filter: grayscale(1);
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+
+  .center {
+    width: 800px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+      text-align: center;
+      line-height: 170%;
+
+      address {
+        font-size: 13px;
+        width: 100%;
+        color: #666;
+      }
+
+      p {
+        font-size: 11px;
+        width: 100%;
+        color: #999;
+      }
+    }
+  }
+
+  .right {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container a {
+      margin: 0 5px;
+
+      img {
+        width: 24px;
+      }
+    }
+  }
 }
 
 /* 로고 */
-#wrap #fooeter .left {
-  width: 200px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#wrap #fooeter .left h1 {
-  width: 100%;
-  height: 40px;
-}
-#wrap #fooeter .left h1 a {
-  font-size: 24px;
-  font-weight: 600;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-#wrap #fooeter .left h1 a span:nth-child(1) {
-  color: #5ac;
-  filter: grayscale(1);
-  opacity: 0.5;
-}
-#wrap #fooeter .left h1 a span:nth-child(2) {
-  margin-left: 5px;
-  color: #c5a;
-  filter: grayscale(1);
-  opacity: 0.5;
-}
 
 /* 주소 카피라이터 */
-#wrap #fooeter .center {
-  width: 800px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#wrap #fooeter .center .container {
-  text-align: center;
-  line-height: 170%;
-}
-#wrap #fooeter .center .container address {
-  font-size: 13px;
-  width: 100%;
-  color: #666;
-}
-#wrap #fooeter .center .container p {
-  font-size: 11px;
-  width: 100%;
-  color: #999;
-}
 
 /* SNS 아이콘 */
-#wrap #fooeter .right {
-  width: 200px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-#wrap #fooeter .right .container a {
-  margin: 0 5px;
-}
-#wrap #fooeter .right .container a img {
-  width: 24px;
-}
 </style>

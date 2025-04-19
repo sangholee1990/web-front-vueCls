@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "use": "nvm use 20.18.1",
+    "use": "nvm use 20.14.0",
     "install": "npm install --no-audit",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,6 +12,8 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "jquery": "^3.7.1",
+    "sass": "^1.86.3",
+    "sass-loader": "^16.0.5",
     "vue": "^3.2.13"
   },
   "devDependencies": {

@@ -43,12 +43,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 팝업창 */
 /* 
 화면의 맨위 맨좌측
 전체너비 높이 
 */
+
 #wrap .popup {
   z-index: 4;
   position: fixed;
@@ -63,57 +64,63 @@ export default {
   justify-content: center;
   align-items: center;
   display: none;
+
+  &.on {
+    display: flex;
+  }
+
+  .container {
+    width: 500px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+
+    .title {
+      width: 100%;
+
+      h1 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #222;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+      }
+    }
+
+    .content {
+      padding-top: 20px;
+
+      ul {
+        width: 100%;
+
+        li {
+          width: 100%;
+          line-height: 180%;
+        }
+      }
+    }
+
+    .button-box {
+      padding-top: 50px;
+      text-align: right;
+
+      button {
+        width: 60px;
+        height: 35px;
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #333;
+        cursor: pointer;
+        border-radius: 3px;
+        font-weight: 500;
+
+        &:hover {
+          background: #555;
+          color: #fff;
+        }
+      }
+    }
+  }
 }
 
-#wrap .popup.on {
-  display: flex;
-}
-
-#wrap .popup .container {
-  width: 500px;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-}
-
-#wrap .popup .container .title {
-  width: 100%;
-}
-#wrap .popup .container .title h1 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #222;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-}
-
-#wrap .popup .container .content {
-  padding-top: 20px;
-}
-#wrap .popup .container .content ul {
-  width: 100%;
-}
-#wrap .popup .container .content ul li {
-  width: 100%;
-  line-height: 180%;
-}
-
-#wrap .popup .container .button-box {
-  padding-top: 50px;
-  text-align: right;
-}
-#wrap .popup .container .button-box button {
-  width: 60px;
-  height: 35px;
-  border: 1px solid #ccc;
-  background: #fff;
-  color: #333;
-  cursor: pointer;
-  border-radius: 3px;
-  font-weight: 500;
-}
-#wrap .popup .container .button-box button:hover {
-  background: #555;
-  color: #fff;
-}
 </style>
