@@ -5,6 +5,7 @@
   "scripts": {
     "use": "nvm use 20.14.0",
     "install": "npm install --no-audit",
+    "deploy": "npm run build",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
