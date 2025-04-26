@@ -18,21 +18,16 @@ const store = createStore({
 
     },
     mutations: {
-        setClickModalOpenAction(state, payload) {
+        setClickModalAction(state, payload) {
             state.isModal = payload.isModal;
             state.공지글 = payload.공지글;
         },
     },
     actions: {
         // 컴포넌트에서 보내온 변경메서드
-        clickModalOpenAction({commit}, payload) {
+        clickModalAction({commit}, payload) {
             console.log(payload);
-            commit('setClickModalOpenAction', payload)
-        },
-
-        clickModalCloseAction({commit}, payload) {
-            console.log(payload);
-            commit('setClickModalOpenAction', payload)
+            commit('setClickModalAction', payload)
         },
     },
 });

@@ -54,7 +54,7 @@ export default {
         공지글: '',
       };
 
-      this.$store.dispatch("clickModalCloseAction", obj);
+      this.$store.dispatch("clickModalAction", obj);
     },
   },
 };

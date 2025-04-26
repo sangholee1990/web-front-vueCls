@@ -118,7 +118,7 @@ export default {
       };
 
       // 페일로드 payload
-      this.$store.dispatch("clickModalOpenAction", obj);
+      this.$store.dispatch("clickModalAction", obj);
     },
   },
 };
