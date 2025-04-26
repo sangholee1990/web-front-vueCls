@@ -1,20 +1,18 @@
 export const count = {
-    state() {
+    state(){
         return {
-            cnt: 0,
+            cnt: 0
         }
     },
-    getters: {
-        // 모달에서 변수 가져오기
-        // getModal(state) {
-        //     return state;
-        // }
-
+    getters:{
+        getModal(state){
+            return state
+        }
     },
-    mutations: {
-      
-    },
-    actions: {
-      
-    },
+    mutations:{   // setters 상태관리 변수 변경 
+       
+    }, 
+    actions:{
+        
+    }
 }

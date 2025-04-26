@@ -1,31 +1,35 @@
 export const modal = {
-    state() {
+    state(){
         return {
             isModal: false,
-            // isModal: true,
-            공지글: '상태관리 공지사항 제목 입니다.',
+            공지글:''
         }
     },
-    getters: {
-        // 모달에서 변수 가져오기
-        getModal(state) {
-            return state;
+    getters:{
+        getModal(state){
+            return state
         }
-
     },
-    mutations: {
-        setClickModalAction(state, payload) {
-            state.isModal = payload.isModal;
-            state.공지글 = payload.공지글;
-        },
-    },
-    actions: {
+    mutations:{   // setters 상태관리 변수 변경 
+        setClickModalOpenAction(state, payload){
+            state.isModal = payload.isModal
+            state.공지글 = payload.공지글
+        },        
+        setClickModalCloseAction(state, payload){
+            state.isModal = payload.isModal
+            state.공지글 = payload.공지글
+        }
+    }, 
+    actions:{
         // 컴포넌트에서 보내온 변경메서드
-        clickModalAction({
-            commit
-        }, payload) {
-            console.log(payload);
-            commit('setClickModalAction', payload)
+        // 모달창 열기 메서드({커밋}, 패일로드)
+        clickModalOpenAction({commit}, payload){
+            // console.log( payload );
+            commit('setClickModalOpenAction', payload)
         },
-    },
+        clickModalCloseAction({commit}, payload){
+            // console.log( payload );
+            commit('setClickModalCloseAction', payload)
+        }
+    }
 }

@@ -36,9 +36,8 @@ export default {
 };
 </script>
   
-<style lang="scss" scoped>
+<style lang="scss"  scoped>
 /* 푸터 */
-
 #wrap #fooeter {
   width: 100%;
   height: 100px;
@@ -127,11 +126,5 @@ export default {
     }
   }
 }
-
-/* 로고 */
-
-/* 주소 카피라이터 */
-
-/* SNS 아이콘 */
 
 </style>

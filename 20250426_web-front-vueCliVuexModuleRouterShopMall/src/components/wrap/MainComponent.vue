@@ -1,7 +1,7 @@
 <template>
   <main id="main">
     <section1-component />
-    <section2-component @click-modal-open-emit='clickModalOpenEmit' />
+    <section2-component @click-modal-open-emit="clickModalOpenEmit" />
   </main>
 </template>
 
@@ -18,16 +18,19 @@ export default {
   },
   methods: {
     clickModalOpenEmit(z) {
-      this.$emit('clickModalOpenEmit', z);
-    }
-  }
+      this.$emit("clickModalOpenEmit", z);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-#wrap #main {
-  width: 100%;
-  position: relative;
-  z-index: 2;
+#wrap{
+  #main {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
 }
+
 </style>

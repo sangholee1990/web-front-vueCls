@@ -1,46 +1,45 @@
 <template>
   <div id="wrap">
     <header-component />
-    <main-component @click-modal-open-emit='clickModalOpenEmit' />
+    <!-- 라우터 => 메인페이지 -->
     <footer-component />
-    <modal-component :is-show="isShow" :msg="msg" @click-close-btn-emit='clickCloseBtnEmit' />
+    <modal-component
+      :is-show="isShow"
+      :msg="msg"
+      @click-close-btn-emit="clickCloseBtnEmit"
+    />
   </div>
 </template>
 
 <script>
 import HeaderComponent from "./wrap/HeaderComponent.vue";
-import MainComponent from "./wrap/MainComponent.vue";
 import FooterComponent from "./wrap/FooterComponent.vue";
 import ModalComponent from "./wrap/ModalComponent.vue";
 
 export default {
   name: "WrapComponent",
-  components: {
-    "header-component": HeaderComponent,
-    "main-component": MainComponent,
-    "footer-component": FooterComponent,
-    "modal-component": ModalComponent,
-  },
   data() {
     return {
       isShow: false,
       msg: "",
-    }
+    };
+  },
+  components: {
+    "header-component": HeaderComponent,
+    "footer-component": FooterComponent,
+    "modal-component": ModalComponent,
   },
   methods: {
     clickModalOpenEmit(z) {
-      // alert('WrapComponent : ' + z);
+      // 자기컴포넌트인 모달컴포넌트에게 프롭스로 데이터 전달하면된다.
       this.isShow = true;
       this.msg = z;
-
-      // 모달 컴포넌트에게 프롭스로 데이터 전달
-      // this.$props()
     },
-    
+    // 닫기 에밋 이벤트
     clickCloseBtnEmit() {
       this.isShow = false;
     },
-  }
+  },
 };
 </script>
 

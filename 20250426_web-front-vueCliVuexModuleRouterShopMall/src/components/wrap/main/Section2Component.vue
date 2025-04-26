@@ -3,27 +3,59 @@
     <div class="left">
       <div class="container">
         <div class="title">
-          <button :class="['notice-btn', { on: gallery }]" title="공지사항" @click="clickNotice">
+          <button
+            :class="['notice-btn', { on: gallery }]"
+            title="공지사항"
+            @click="clickNotice"
+          >
             공지사항
           </button>
-          <button :class="['gallery-btn', { on: gallery }]" title="갤러리" @click="clickGallery">
+          <button
+            :class="['gallery-btn', { on: gallery }]"
+            title="갤러리"
+            @click="clickGallery"
+          >
             갤러리
           </button>
         </div>
         <div class="content">
           <div :class="['notice-box', { on: gallery }]">
             <ul>
-              <li v-for="item in 공지사항" :key="item.공지글" :data-key="item.공지글">
-                <a href="#" class="popup-btn" :title="item.공지글" @click="clickModalOpen(item.공지글)">{{ item.공지글
-                }}</a><span>{{ item.날짜 }}</span>
+
+              <li
+                v-for="item in 공지사항"
+                :key="item.공지글"
+                :data-key="item.공지글"
+              >
+                <a
+                  href="#"
+                  class="popup-btn"
+                  :title="item.공지글"
+                  @click="clickModalOpen(item.공지글)"
+                  >{{item.공지글}}</a
+                ><span>{{item.날짜}}</span>
               </li>
+
+             
             </ul>
           </div>
           <div :class="['gallery-box', { on: gallery }]">
             <ul>
-              <li v-for="item in 갤러리" :key="item.타이틀" :data-key="item.타이틀">
-                <a href="#" :title="item.타이틀"><img :src="item.이미지" :alt="item.타이틀" /></a>
+             
+              <li
+                 v-for="item in 갤러리"
+                 :key="item.타이틀"
+                 :data-key="item.타이틀"
+              >
+                <a
+                  href="#"
+                  :title="item.타이틀"
+                  ><img
+                    :src="item.이미지"
+                    :alt="item.타이틀"
+                /></a>
               </li>
+              
             </ul>
           </div>
         </div>
@@ -31,99 +63,105 @@
     </div>
     <div class="center">
       <div class="container">
-        <div class="title hide">
-          <h2>이벤트 배너</h2>
-        </div>
-        <div class="content" v-for="item in 배너" :key="item.타이틀" :data-key="item.타이틀">
-          <a href="#" :title="item.타이틀" :style="item.이미지">
-            <h3>{{ item.타이틀 }}</h3>
+        <div class="title hide"><h2>이벤트 배너</h2></div>
+        <div 
+          class="content" 
+          v-for="item in 배너"
+          :key="item.타이틀"
+          :data-key="item.타이틀"
+        >
+          <a 
+            href="#" 
+            :title="item.타이틀"
+            :style="item.이미지"
+          >
+            <h3>{{item.타이틀}}</h3>
           </a>
         </div>
       </div>
     </div>
     <div class="right">
       <div class="container">
-        <div class="title hide">
-          <h2>바로가기 배너</h2>
-        </div>
+        <div class="title hide"><h2>바로가기 배너</h2></div>
         <div class="content">
           <ul>
-            <li v-for="item in 바로가기" :key="item.타이틀" :data-key="item.타이틀">
-              <a href="#" :title="item.타이틀" :style="item.이미지"><span>{{ item.타이틀 }}</span></a>
+
+            <li 
+              v-for="item in 바로가기"
+              :key="item.타이틀"
+              :data-key="item.타이틀"
+            >
+              <a 
+                href="#"                 
+                :title="item.타이틀"
+                :style="item.이미지"
+                >
+                  <span>{{item.타이틀}}</span>
+                </a>
             </li>
+
+            
           </ul>
         </div>
       </div>
     </div>
   </section>
 </template>
-
+  
+  
 <script>
-import axios from 'axios';
+import axios from 'axios';  
 
 export default {
   name: "Section2Component",
-  props: [],
   data() {
     return {
       gallery: false,
-      // gallery: true,
       공지사항: [],
       갤러리: [],
-      배너: [],
-      바로가기: [],
+      배너:[],
+      바로가기:[]
     };
   },
-  created() {
-
-    // fetch("./data/section2.json")
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     this.공지사항 = res.공지사항;
-    //     this.갤러리 = res.갤러리;
-    //     this.배너 = res.배너;
-    //     this.바로가기 = res.바로가기;
-    //   })
-    //   .catch((err) => console.log(err));
-
-    axios({ url: './data/section2.json', method: 'GET' })
-      .then((res) => {
+  created(){
+    axios({
+      url:'./data/section2.json',
+      method:'GET'
+    })
+    .then((res)=>{
         this.공지사항 = res.data.공지사항;
         this.갤러리 = res.data.갤러리;
         this.배너 = res.data.배너;
         this.바로가기 = res.data.바로가기;
-      }).catch((err) => {
-        console.log(err);
-      });
-
+    })
+    .catch((err)=>{
+        console.log( err );
+    });
   },
   methods: {
+    // 갤러리함수
     clickGallery() {
       this.gallery = true;
     },
+    // 공지사항함수
     clickNotice() {
-      this.gallery = false;
+      this.gallery = false; // 초기화
     },
-    // 레이어 팝업 열기
-    // 에밋 Emit: 자식 컴포넌트 => 부모 컴포넌트 통신 
-    // 프롭스 props: 부모 컴포넌트 => 자식 컴포넌트 통신 
-    // 스토어에 모달 띄우기 내용을 변경 요청 전달 (디스패치 Dispatch 요청메서드, 값)
-    // => 스토어 => 액션에 
-    clickModalOpen(z) {
-      // this.$emit("clickModalOpenEmit", z)
 
+    // 레이어팝업창열기함수
+    // 스토어에 모달 띄우기 내용을 변경 요청(디스패치 Dispatch(변경요청액션메서드, 값))
+    // => 스토어 => 액션(actions:{})에 전달 한다.
+    clickModalOpen(z) {
       const obj = {
         isModal: true,
-        공지글: z,
-      };
-
-      // 페일로드 payload
-      this.$store.dispatch("clickModalAction", obj);
+        공지글: z
+      }
+      this.$store.dispatch("clickModalOpenAction", obj);  // 패일로드 payload => 공지글
     },
   },
 };
 </script>
-
+  
 <style lang="scss" scoped>
 #wrap #main #section2 {
   width: 100%;
@@ -194,7 +232,7 @@ export default {
         position: relative;
         z-index: 1;
 
-        >div {
+        > div {
           width: 100%;
           height: 100%;
           padding: 0 10px;
@@ -300,7 +338,7 @@ export default {
     }
   }
 
-  /* 배너 */
+  // 배너
   .center {
     width: 33.333%;
     height: 100%;
@@ -382,17 +420,6 @@ export default {
               font-weight: 600;
             }
 
-            // &:nth-child(1) a {
-            //   background-image: url(../../../../public/images/image2.jpg);
-            // }
-
-            // &:nth-child(2) a {
-            //   background-image: url(../../../../public/images/image.jpg);
-            // }
-
-            // &:nth-child(3) a {
-            //   background-image: url(../../../../public/images/image3.jpg);
-            // }
           }
         }
       }
@@ -400,26 +427,4 @@ export default {
   }
 }
 
-/* 공지사항 & 갤러리 박스 */
-/* 타이틀(버튼) */
-
-/* 공지사항버튼 */
-
-/* 갤러리버튼 */
-
-/* 콘텐츠(목록 내용) 공지사항 내용 & 갤러리 내용 */
-
-/* 공지사항 박스 갤러리 박스 공통스타일 */
-
-/* 공지사항 박스 개별스타일 */
-
-/* 1. 줄바꿈 없이 한줄로 표기    white-space: nowrap */
-/* 2. 270픽셀 넘치는 텍스트 숨김 overflow: hidden */
-/* 3. 말줄임표 표기 text-overflow: ellipsis */
-
-/* 갤러리 박스 개별스타일 */
-
-/* 이벤트 배너 */
-
-/* 바로가기 배너 */
 </style>

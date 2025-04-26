@@ -1,14 +1,12 @@
 <template>
-  <!-- <div :class="['popup', { on: isShow }]"> -->
   <div :class="['popup', { on: isOpenModal }]">
     <div class="container">
       <div class="title">
-        <!-- <h1>{{ msg }}</h1> -->
-        <h1>{{ 공지글제목 }}</h1>
+        <h1>9월 JUST 쇼핑몰 세일 안내</h1>
       </div>
       <div class="content">
         <ul>
-          <li>오랜만에 찾아온 세일 안내!</li>
+          <li>{{ 공지글제목 }}</li>
           <li>
             JUST 쇼핑몰이 제안하는 유니크한 시즌별 패션 트렌드를 즐겨보세요.
           </li>
@@ -26,40 +24,37 @@
     </div>
   </div>
 </template>
-
+  
+  
 <script>
 export default {
   name: "ModalComponent",
-  props: ['isShow', 'msg'],
+  props: ["isShow", "msg"],
   data() {
-    return {
-      // popup: false,
-    };
+    return {};
   },
   computed: {
-    isOpenModal() {
-      return this.$store.getters.getModal.isModal;
+    isOpenModal(){
+      return this.$store.getters.getModal.isModal
     },
-    공지글제목() {
-      return this.$store.getters.getModal.공지글;
-    },
+    공지글제목(){
+      return this.$store.getters.getModal.공지글
+    }
   },
   methods: {
+    // 자식 => 부모 => 이벤트 닫기 전달
     clickCloseBtn() {
-      // this.popup = false;
-      // this.$emit("clickCloseBtnEmit");
-
+      // 모달창 닫기
       const obj = {
         isModal: false,
-        공지글: '',
-      };
-
-      this.$store.dispatch("clickModalAction", obj);
+        공지글: '' 
+      }
+      this.$store.dispatch("clickModalCloseAction", obj);
     },
   },
 };
 </script>
-
+  
 <style lang="scss" scoped>
 /* 팝업창 */
 /* 
@@ -84,6 +79,8 @@ export default {
 
   &.on {
     display: flex;
+
+    /* block */
   }
 
   .container {

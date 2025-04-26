@@ -2,92 +2,126 @@
   <header id="header">
     <div class="left">
       <h1>
-        <a href="./index.html" :title="logo"><span>{{ logo.split(" ")[0] }}</span>
-          <span>{{ logo.split(" ")[1] }}</span></a>
+        <a href="./index.html" :title="logo"
+          ><span>{{ logo.split(" ")[0] }}</span>
+          <span>{{ logo.split(" ")[1] }}</span></a
+        >
       </h1>
     </div>
     <div class="right">
       <nav id="nav" @mouseleave="mouseleaveNav">
         <ul>
-          <li v-for="item, idx in gnb" :key="item.메인메뉴" class="col" :data-key="item.메인메뉴">
-            <a href="#" :class="['main-btn', { on: menu[idx] }]" title={{item.메인메뉴}}
-              @mouseenter="mouseenterMenu(idx)">{{ item.메인메뉴 }}</a>
-            <div :class="['sub', `sub${idx + 1}`, { on: menu[idx], off: nav }]">
+
+          <li 
+            v-for="item, idx in gnb"
+            :key="item.메인메뉴"
+
+            class="col" 
+            :data-key="item.메인메뉴"
+          >
+            <a
+              href="#"
+              :class="['main-btn', { on: menu[idx] }]"
+              :title="item.메인메뉴"
+              @mouseenter="mouseenterMenu(idx)"
+              >{{item.메인메뉴}}</a
+            >
+            <div :class="['sub', `sub${idx+1}`, { 'on': menu[idx], 'off': nav }]">
               <div class="sub-container">
                 <ul>
-                  <li v-for="item2, idx2 in item.서브메뉴" :key="idx2" :data-key="idx2">
-                    <ul>
-                      <li v-for="item3, idx3 in item2" :key="idx3" :data-key="idx3">
-                        <a href="#" :title="item3">{{ item3 }}</a>
-                      </li>
-                    </ul>
+
+                  <li
+                    v-for="item2, idx2 in item.서브메뉴"
+                    :key="idx2"
+                    :data-key="idx2"
+                  >                      
+                      <ul>
+                        
+                          <li
+                            v-for="item3, idx3 in item2"
+                            :key="idx3"
+                            :data-key="idx3"
+                          >
+                            <a href="#" :title="item3">
+                              {{item3}}
+                            </a>
+                          </li>
+                        
+                      </ul>
                   </li>
+                 
                 </ul>
               </div>
             </div>
+
           </li>
+
+
         </ul>
       </nav>
     </div>
   </header>
-</template>
 
+  <!-- 로딩시 메인페이지 보이고,
+  링크에서 클릭된 페이지로 교체된다. -->
+
+  <router-view />
+
+</template>
+  
 <script>
 export default {
   name: "HeaderComponent",
   props: [],
   data() {
     return {
-      logo: "",
+      logo: "",      
       menu: Array(4).fill(false),
       nav: false,
-      // public/data/header.json
-      gnb: []
+      gnb: []  // GNB 외부테이터 사용 => [public] header.json
     };
   },
-  created() {
+  created(){
+
     // gnb json 데이터 가져오기
-    fetch("./data/header.json")
-      .then((res) => res.json())
-      .then((res) => {
+    fetch('./data/header.json')
+    .then((res)=>res.json())  // json 변환
+    .then((res)=>{
+        console.log( res );
         this.gnb = res.gnb;
         this.logo = res.logo;
-        this.nav = res.nav;
-      })
-      .catch((err) => console.log(err));
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
 
   },
   methods: {
-    // 마우스 이벤트 전달 함수
-    mouseenterMenu(n) {
-      this.menu = Array(this.gnb.length).fill(false);
-      this.menu[n] = true;
-    },
 
+    // 마우스 이벤트 전달 함수(매개변수 0 1 2 3 )
+    // mouseenterMenu1() ... mouseenterMenu4()
+    mouseenterMenu(n) {   
+      this.menu = Array(4).fill(false);  // this.menu= [false,false,false,false]
+      this.menu[n] = true;
+    },    
+
+    // 네비게이션(GNB)
+    // 마우스아웃 마우스떠나면
     // 모든 메인버튼, 서브메뉴 초기화
     mouseleaveNav() {
-      // 먼저 실행하고 0.3초 =>  300,  1초 => 1000, 3초 => 3000  10초 10000
       this.nav = true;
 
-      // 메인버튼, 서브메뉴
+      // 메인버튼, 서브메뉴 초기화
       setTimeout(() => {
-        this.menu = Array(this.gnb.length).fill(false);
-
-        // nav 초기화
+        this.menu = Array(4).fill(false);  // this.menu = [false,false,false,false]
         this.nav = false;
       }, 300);
     },
   },
 };
 </script>
-
+  
 <style lang="scss" scoped>
-// scss 중첩 코딩
-// #wrap {
-//   #header {
-//   }
-// }
-
 /* 헤더 */
 
 #wrap #header {
@@ -136,26 +170,21 @@ export default {
 
     #nav {
       width: 700px;
-      // margin: 49px 20px 0 auto;
       margin: 50px 20px 0 auto;
 
-      >ul {
+      > ul {
         display: flex;
         width: 100%;
 
-        >li {
+        > li {
           width: 25%;
-          // border-top: 1px solid #ddd;
-          // border-bottom: 1px solid #ddd;
-          // border-left: 1px solid #ddd;
           border: 0;
 
           &:last-child {
-            // border-right: 1px solid #ddd;
             border: 0;
           }
 
-          >a {
+          > a {
             width: 100%;
             display: flex;
             align-items: center;
@@ -168,8 +197,7 @@ export default {
             /* transition: all 0.3s; */
             background: #fff;
 
-            &:hover,
-            &.on {
+            &:hover, &.on {
               background: #2c2a29;
               color: #669900;
             }
@@ -198,18 +226,18 @@ export default {
               width: 700px;
               margin: 0 20px 0 auto;
 
-              >ul {
+              > ul {
                 width: 100%;
                 display: flex;
                 padding: 20px 0;
 
-                >li {
+                > li {
                   width: 25%;
 
-                  >ul {
+                  > ul {
                     width: 100%;
 
-                    >li {
+                    > li {
                       width: 100%;
 
                       a {
@@ -268,7 +296,4 @@ export default {
   }
 }
 
-/* #wrap #header .right #nav > ul > li .sub1 {display: block;} */
-
-/* 4칸 */
 </style>
