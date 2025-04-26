@@ -1,0 +1,15 @@
+{
+    "슬라이드": [{
+            "타이틀": "JUST 쇼핑몰 오픈!",
+            "배경이미지": "background-image: url(./images/banner_img.jpg)"
+        },
+        {
+            "타이틀": "종합 쇼핑의 새 막을 연다! JUST 쇼핑몰!",
+            "배경이미지": "background-image: url(./images/banner_img2.jpg)"
+        },
+        {
+            "타이틀": "JUST쇼핑몰 9월 세일 이벤트 안내",
+            "배경이미지": "background-image: url(./images/banner_img3.png)"
+        }
+    ]
+}
