@@ -107,8 +107,18 @@ export default {
     // 레이어 팝업 열기
     // 에밋 Emit: 자식 컴포넌트 => 부모 컴포넌트 통신 
     // 프롭스 props: 부모 컴포넌트 => 자식 컴포넌트 통신 
+    // 스토어에 모달 띄우기 내용을 변경 요청 전달 (디스패치 Dispatch 요청메서드, 값)
+    // => 스토어 => 액션에 
     clickModalOpen(z) {
-      this.$emit("clickModalOpenEmit", z)
+      // this.$emit("clickModalOpenEmit", z)
+
+      const obj = {
+        isModal: true,
+        공지글: z,
+      };
+
+      // 페일로드 payload
+      this.$store.dispatch("clickModalOpenAction", obj);
     },
   },
 };

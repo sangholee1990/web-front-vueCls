@@ -1,8 +1,10 @@
 <template>
-  <div :class="['popup', { on: isShow }]">
+  <!-- <div :class="['popup', { on: isShow }]"> -->
+  <div :class="['popup', { on: isOpenModal }]">
     <div class="container">
       <div class="title">
-        <h1>{{ msg }}</h1>
+        <!-- <h1>{{ msg }}</h1> -->
+        <h1>{{ 공지글제목 }}</h1>
       </div>
       <div class="content">
         <ul>
@@ -34,10 +36,25 @@ export default {
       // popup: false,
     };
   },
+  computed: {
+    isOpenModal() {
+      return this.$store.getters.getModal.isModal;
+    },
+    공지글제목() {
+      return this.$store.getters.getModal.공지글;
+    },
+  },
   methods: {
     clickCloseBtn() {
       // this.popup = false;
-      this.$emit("clickCloseBtnEmit");
+      // this.$emit("clickCloseBtnEmit");
+
+      const obj = {
+        isModal: false,
+        공지글: '',
+      };
+
+      this.$store.dispatch("clickModalCloseAction", obj);
     },
   },
 };

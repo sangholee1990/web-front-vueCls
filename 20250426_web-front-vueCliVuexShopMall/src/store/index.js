@@ -5,13 +5,36 @@ import {
 const store = createStore({
     state() {
         return {
-            isShow: false,
-            cnt: 0,
+            isModal: false,
+            // isModal: true,
+            공지글: '상태관리 공지사항 제목 입니다.',
         }
     },
-    getters: {},
-    mutations: {},
-    actions: {},
+    getters: {
+        // 모달에서 변수 가져오기
+        getModal(state) {
+            return state;
+        }
+
+    },
+    mutations: {
+        setClickModalOpenAction(state, payload) {
+            state.isModal = payload.isModal;
+            state.공지글 = payload.공지글;
+        },
+    },
+    actions: {
+        // 컴포넌트에서 보내온 변경메서드
+        clickModalOpenAction({commit}, payload) {
+            console.log(payload);
+            commit('setClickModalOpenAction', payload)
+        },
+
+        clickModalCloseAction({commit}, payload) {
+            console.log(payload);
+            commit('setClickModalOpenAction', payload)
+        },
+    },
 });
 
 export default store;
