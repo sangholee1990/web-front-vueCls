@@ -2,54 +2,41 @@
   <header id="header">
     <div class="left">
       <h1>
-        <a href="./index.html" :title="logo"
-          ><span>{{ logo.split(" ")[0] }}</span>
-          <span>{{ logo.split(" ")[1] }}</span></a
-        >
+        <router-link to="/" :title="logo"><span>{{ logo.split(" ")[0] }}</span>
+          <span>{{ logo.split(" ")[1] }}</span></router-link>
       </h1>
     </div>
     <div class="right">
+      <aside id="aside">
+        <!-- <a href="/sub1">서브 1</a> -->
+        <router-link to="/sub1">서브 1</router-link>
+        <router-link to="/sub2">서브 2</router-link>
+        <router-link to="/sub3">서브 3</router-link>
+        <router-link to="/sub4">서브 4</router-link>
+      </aside>
+
       <nav id="nav" @mouseleave="mouseleaveNav">
         <ul>
 
-          <li 
-            v-for="item, idx in gnb"
-            :key="item.메인메뉴"
-
-            class="col" 
-            :data-key="item.메인메뉴"
-          >
-            <a
-              href="#"
-              :class="['main-btn', { on: menu[idx] }]"
-              :title="item.메인메뉴"
-              @mouseenter="mouseenterMenu(idx)"
-              >{{item.메인메뉴}}</a
-            >
-            <div :class="['sub', `sub${idx+1}`, { 'on': menu[idx], 'off': nav }]">
+          <li v-for="item, idx in gnb" :key="item.메인메뉴" class="col" :data-key="item.메인메뉴">
+            <a href="#" :class="['main-btn', { on: menu[idx] }]" :title="item.메인메뉴" @mouseenter="mouseenterMenu(idx)">{{
+              item.메인메뉴 }}</a>
+            <div :class="['sub', `sub${idx + 1}`, { 'on': menu[idx], 'off': nav }]">
               <div class="sub-container">
                 <ul>
 
-                  <li
-                    v-for="item2, idx2 in item.서브메뉴"
-                    :key="idx2"
-                    :data-key="idx2"
-                  >                      
-                      <ul>
-                        
-                          <li
-                            v-for="item3, idx3 in item2"
-                            :key="idx3"
-                            :data-key="idx3"
-                          >
-                            <a href="#" :title="item3">
-                              {{item3}}
-                            </a>
-                          </li>
-                        
-                      </ul>
+                  <li v-for="item2, idx2 in item.서브메뉴" :key="idx2" :data-key="idx2">
+                    <ul>
+
+                      <li v-for="item3, idx3 in item2" :key="idx3" :data-key="idx3">
+                        <a href="#" :title="item3">
+                          {{ item3 }}
+                        </a>
+                      </li>
+
+                    </ul>
                   </li>
-                 
+
                 </ul>
               </div>
             </div>
@@ -68,42 +55,42 @@
   <router-view />
 
 </template>
-  
+
 <script>
 export default {
   name: "HeaderComponent",
   props: [],
   data() {
     return {
-      logo: "",      
+      logo: "",
       menu: Array(4).fill(false),
       nav: false,
       gnb: []  // GNB 외부테이터 사용 => [public] header.json
     };
   },
-  created(){
+  created() {
 
     // gnb json 데이터 가져오기
     fetch('./data/header.json')
-    .then((res)=>res.json())  // json 변환
-    .then((res)=>{
-        console.log( res );
+      .then((res) => res.json())  // json 변환
+      .then((res) => {
+        console.log(res);
         this.gnb = res.gnb;
         this.logo = res.logo;
-    })
-    .catch((err)=>{
-      console.log(err);
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
   },
   methods: {
 
     // 마우스 이벤트 전달 함수(매개변수 0 1 2 3 )
     // mouseenterMenu1() ... mouseenterMenu4()
-    mouseenterMenu(n) {   
+    mouseenterMenu(n) {
       this.menu = Array(4).fill(false);  // this.menu= [false,false,false,false]
       this.menu[n] = true;
-    },    
+    },
 
     // 네비게이션(GNB)
     // 마우스아웃 마우스떠나면
@@ -120,7 +107,7 @@ export default {
   },
 };
 </script>
-  
+
 <style lang="scss" scoped>
 /* 헤더 */
 
@@ -168,15 +155,31 @@ export default {
     width: 1000px;
     height: 100%;
 
+    #aside {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      a {
+        margin-left: 20px;
+        color: #333;
+
+        &:hover {
+          color: red;
+          text-decoration: underline;
+        }
+      }
+    }
+
     #nav {
       width: 700px;
-      margin: 50px 20px 0 auto;
+      margin: 37px 20px 0 auto;
 
-      > ul {
+      >ul {
         display: flex;
         width: 100%;
 
-        > li {
+        >li {
           width: 25%;
           border: 0;
 
@@ -184,7 +187,7 @@ export default {
             border: 0;
           }
 
-          > a {
+          >a {
             width: 100%;
             display: flex;
             align-items: center;
@@ -197,7 +200,8 @@ export default {
             /* transition: all 0.3s; */
             background: #fff;
 
-            &:hover, &.on {
+            &:hover,
+            &.on {
               background: #2c2a29;
               color: #669900;
             }
@@ -226,18 +230,18 @@ export default {
               width: 700px;
               margin: 0 20px 0 auto;
 
-              > ul {
+              >ul {
                 width: 100%;
                 display: flex;
                 padding: 20px 0;
 
-                > li {
+                >li {
                   width: 25%;
 
-                  > ul {
+                  >ul {
                     width: 100%;
 
-                    > li {
+                    >li {
                       width: 100%;
 
                       a {
@@ -295,5 +299,4 @@ export default {
     height: 0px;
   }
 }
-
 </style>
