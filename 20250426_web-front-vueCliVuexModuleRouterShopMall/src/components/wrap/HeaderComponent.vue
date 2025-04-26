@@ -9,7 +9,7 @@
     <div class="right">
       <aside id="aside">
         <!-- <a href="/sub1">서브 1</a> -->
-        <router-link to="/sub1">서브 1</router-link>
+        <router-link to="/sub1">TODO LIST</router-link>
         <router-link to="/sub2">서브 2</router-link>
         <router-link to="/sub3">서브 3</router-link>
         <router-link to="/sub4">서브 4</router-link>
